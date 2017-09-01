@@ -1,0 +1,5 @@
+import Cocoa
+
+class Foo1: NSObject {
+
+}

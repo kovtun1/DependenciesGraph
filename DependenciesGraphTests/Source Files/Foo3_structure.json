@@ -1,0 +1,589 @@
+{
+  "key.diagnostic_stage" : "source.diagnostic.stage.swift.parse",
+  "key.substructure" : [
+    {
+      "key.bodyoffset" : 42,
+      "key.nameoffset" : 23,
+      "key.accessibility" : "source.lang.swift.accessibility.internal",
+      "key.length" : 96,
+      "key.substructure" : [
+        {
+          "key.bodyoffset" : 69,
+          "key.nameoffset" : 49,
+          "key.accessibility" : "source.lang.swift.accessibility.internal",
+          "key.length" : 30,
+          "key.typename" : "String",
+          "key.name" : "firstName",
+          "key.kind" : "source.lang.swift.decl.var.instance",
+          "key.bodylength" : 5,
+          "key.namelength" : 9,
+          "key.offset" : 45
+        },
+        {
+          "key.bodyoffset" : 102,
+          "key.nameoffset" : 82,
+          "key.accessibility" : "source.lang.swift.accessibility.internal",
+          "key.length" : 30,
+          "key.typename" : "String",
+          "key.name" : "lastName",
+          "key.kind" : "source.lang.swift.decl.var.instance",
+          "key.bodylength" : 5,
+          "key.namelength" : 8,
+          "key.offset" : 78
+        }
+      ],
+      "key.runtime_name" : "_TtP8__main__17UserRepresentable_",
+      "key.name" : "UserRepresentable",
+      "key.kind" : "source.lang.swift.decl.protocol",
+      "key.bodylength" : 67,
+      "key.namelength" : 17,
+      "key.offset" : 14
+    },
+    {
+      "key.bodyoffset" : 152,
+      "key.nameoffset" : 127,
+      "key.accessibility" : "source.lang.swift.accessibility.private",
+      "key.substructure" : [
+        {
+          "key.nameoffset" : 159,
+          "key.accessibility" : "source.lang.swift.accessibility.private",
+          "key.length" : 22,
+          "key.typename" : "String",
+          "key.name" : "firstName",
+          "key.kind" : "source.lang.swift.decl.var.instance",
+          "key.namelength" : 9,
+          "key.offset" : 155
+        },
+        {
+          "key.nameoffset" : 184,
+          "key.accessibility" : "source.lang.swift.accessibility.private",
+          "key.length" : 22,
+          "key.typename" : "String",
+          "key.name" : "lastName",
+          "key.kind" : "source.lang.swift.decl.var.instance",
+          "key.namelength" : 8,
+          "key.offset" : 180
+        }
+      ],
+      "key.length" : 84,
+      "key.elements" : [
+        {
+          "key.kind" : "source.lang.swift.structure.elem.typeref",
+          "key.offset" : 133,
+          "key.length" : 17
+        }
+      ],
+      "key.name" : "User",
+      "key.inheritedtypes" : [
+        {
+          "key.name" : "UserRepresentable"
+        }
+      ],
+      "key.kind" : "source.lang.swift.decl.struct",
+      "key.bodylength" : 51,
+      "key.namelength" : 4,
+      "key.offset" : 120
+    },
+    {
+      "key.bodyoffset" : 239,
+      "key.nameoffset" : 215,
+      "key.accessibility" : "source.lang.swift.accessibility.internal",
+      "key.length" : 126,
+      "key.substructure" : [
+        {
+          "key.nameoffset" : 247,
+          "key.accessibility" : "source.lang.swift.accessibility.internal",
+          "key.length" : 88,
+          "key.substructure" : [
+            {
+              "key.nameoffset" : 263,
+              "key.typename" : "UserRepresentable",
+              "key.length" : 23,
+              "key.name" : "user",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 263,
+              "key.namelength" : 4
+            },
+            {
+              "key.nameoffset" : 288,
+              "key.typename" : "String",
+              "key.length" : 20,
+              "key.name" : "newFirstName",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 288,
+              "key.namelength" : 12
+            }
+          ],
+          "key.name" : "changeFirstName(user:newFirstName:)",
+          "key.kind" : "source.lang.swift.decl.function.method.instance",
+          "key.namelength" : 62,
+          "key.offset" : 242
+        }
+      ],
+      "key.runtime_name" : "_TtP8__main__22UserFirstNameChangable_",
+      "key.name" : "UserFirstNameChangable",
+      "key.kind" : "source.lang.swift.decl.protocol",
+      "key.bodylength" : 92,
+      "key.namelength" : 22,
+      "key.offset" : 206
+    },
+    {
+      "key.bodyoffset" : 366,
+      "key.nameoffset" : 343,
+      "key.accessibility" : "source.lang.swift.accessibility.internal",
+      "key.length" : 123,
+      "key.substructure" : [
+        {
+          "key.nameoffset" : 374,
+          "key.accessibility" : "source.lang.swift.accessibility.internal",
+          "key.length" : 86,
+          "key.substructure" : [
+            {
+              "key.nameoffset" : 389,
+              "key.typename" : "UserRepresentable",
+              "key.length" : 23,
+              "key.name" : "user",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 389,
+              "key.namelength" : 4
+            },
+            {
+              "key.nameoffset" : 414,
+              "key.typename" : "String",
+              "key.length" : 19,
+              "key.name" : "newLastName",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 414,
+              "key.namelength" : 11
+            }
+          ],
+          "key.name" : "changeLastName(user:newLastName:)",
+          "key.kind" : "source.lang.swift.decl.function.method.instance",
+          "key.namelength" : 60,
+          "key.offset" : 369
+        }
+      ],
+      "key.runtime_name" : "_TtP8__main__21UserLastNameChangable_",
+      "key.name" : "UserLastNameChangable",
+      "key.kind" : "source.lang.swift.decl.protocol",
+      "key.bodylength" : 90,
+      "key.namelength" : 21,
+      "key.offset" : 334
+    },
+    {
+      "key.bodyoffset" : 530,
+      "key.nameoffset" : 468,
+      "key.accessibility" : "source.lang.swift.accessibility.internal",
+      "key.length" : 72,
+      "key.elements" : [
+        {
+          "key.kind" : "source.lang.swift.structure.elem.typeref",
+          "key.offset" : 483,
+          "key.length" : 22
+        },
+        {
+          "key.kind" : "source.lang.swift.structure.elem.typeref",
+          "key.offset" : 507,
+          "key.length" : 21
+        }
+      ],
+      "key.runtime_name" : "_TtP8__main__13UserManagable_",
+      "key.name" : "UserManagable",
+      "key.inheritedtypes" : [
+        {
+          "key.name" : "UserFirstNameChangable"
+        },
+        {
+          "key.name" : "UserLastNameChangable"
+        }
+      ],
+      "key.kind" : "source.lang.swift.decl.protocol",
+      "key.bodylength" : 0,
+      "key.namelength" : 13,
+      "key.offset" : 459
+    },
+    {
+      "key.accessibility" : "source.lang.swift.accessibility.private",
+      "key.length" : 769,
+      "key.substructure" : [
+        {
+          "key.nameoffset" : 590,
+          "key.accessibility" : "source.lang.swift.accessibility.private",
+          "key.length" : 49,
+          "key.typename" : "UserFirstNameChangable",
+          "key.name" : "userFirstNameChanger",
+          "key.kind" : "source.lang.swift.decl.var.instance",
+          "key.namelength" : 20,
+          "key.offset" : 586
+        },
+        {
+          "key.nameoffset" : 650,
+          "key.accessibility" : "source.lang.swift.accessibility.private",
+          "key.length" : 48,
+          "key.typename" : "UserLastNameChangable",
+          "key.name" : "userLastNameChanger",
+          "key.kind" : "source.lang.swift.decl.var.instance",
+          "key.namelength" : 19,
+          "key.offset" : 646
+        },
+        {
+          "key.bodyoffset" : 820,
+          "key.nameoffset" : 709,
+          "key.accessibility" : "source.lang.swift.accessibility.internal",
+          "key.length" : 219,
+          "key.substructure" : [
+            {
+              "key.nameoffset" : 719,
+              "key.typename" : "UserFirstNameChangable",
+              "key.length" : 45,
+              "key.name" : "userFirstNameChanger",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 719,
+              "key.namelength" : 20
+            },
+            {
+              "key.nameoffset" : 770,
+              "key.typename" : "UserLastNameChangable",
+              "key.length" : 44,
+              "key.name" : "userLastNameChanger",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 770,
+              "key.namelength" : 19
+            }
+          ],
+          "key.name" : "init(userFirstNameChanger:userLastNameChanger:)",
+          "key.kind" : "source.lang.swift.decl.function.method.instance",
+          "key.bodylength" : 107,
+          "key.namelength" : 109,
+          "key.offset" : 709
+        },
+        {
+          "key.bodyoffset" : 1024,
+          "key.nameoffset" : 939,
+          "key.accessibility" : "source.lang.swift.accessibility.private",
+          "key.length" : 187,
+          "key.substructure" : [
+            {
+              "key.nameoffset" : 955,
+              "key.typename" : "UserRepresentable",
+              "key.length" : 23,
+              "key.name" : "user",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 955,
+              "key.namelength" : 4
+            },
+            {
+              "key.nameoffset" : 980,
+              "key.typename" : "String",
+              "key.length" : 20,
+              "key.name" : "newFirstName",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 980,
+              "key.namelength" : 12
+            },
+            {
+              "key.namelength" : 41,
+              "key.nameoffset" : 1036,
+              "key.length" : 81,
+              "key.substructure" : [
+                {
+                  "key.namelength" : 4,
+                  "key.nameoffset" : 1078,
+                  "key.length" : 10,
+                  "key.name" : "user",
+                  "key.bodyoffset" : 1084,
+                  "key.bodylength" : 4,
+                  "key.kind" : "source.lang.swift.expr.argument",
+                  "key.offset" : 1078
+                },
+                {
+                  "key.namelength" : 12,
+                  "key.nameoffset" : 1090,
+                  "key.length" : 26,
+                  "key.name" : "newFirstName",
+                  "key.bodyoffset" : 1104,
+                  "key.bodylength" : 12,
+                  "key.kind" : "source.lang.swift.expr.argument",
+                  "key.offset" : 1090
+                }
+              ],
+              "key.name" : "self.userFirstNameChanger.changeFirstName",
+              "key.bodyoffset" : 1078,
+              "key.bodylength" : 38,
+              "key.kind" : "source.lang.swift.expr.call",
+              "key.offset" : 1036
+            }
+          ],
+          "key.name" : "changeFirstName(user:newFirstName:)",
+          "key.kind" : "source.lang.swift.decl.function.method.instance",
+          "key.bodylength" : 96,
+          "key.namelength" : 62,
+          "key.offset" : 934
+        },
+        {
+          "key.bodyoffset" : 1215,
+          "key.nameoffset" : 1132,
+          "key.accessibility" : "source.lang.swift.accessibility.private",
+          "key.length" : 181,
+          "key.substructure" : [
+            {
+              "key.nameoffset" : 1147,
+              "key.typename" : "UserRepresentable",
+              "key.length" : 23,
+              "key.name" : "user",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 1147,
+              "key.namelength" : 4
+            },
+            {
+              "key.nameoffset" : 1172,
+              "key.typename" : "String",
+              "key.length" : 19,
+              "key.name" : "newLastName",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 1172,
+              "key.namelength" : 11
+            },
+            {
+              "key.namelength" : 39,
+              "key.nameoffset" : 1227,
+              "key.length" : 77,
+              "key.substructure" : [
+                {
+                  "key.namelength" : 4,
+                  "key.nameoffset" : 1267,
+                  "key.length" : 10,
+                  "key.name" : "user",
+                  "key.bodyoffset" : 1273,
+                  "key.bodylength" : 4,
+                  "key.kind" : "source.lang.swift.expr.argument",
+                  "key.offset" : 1267
+                },
+                {
+                  "key.namelength" : 11,
+                  "key.nameoffset" : 1279,
+                  "key.length" : 24,
+                  "key.name" : "newLastName",
+                  "key.bodyoffset" : 1292,
+                  "key.bodylength" : 11,
+                  "key.kind" : "source.lang.swift.expr.argument",
+                  "key.offset" : 1279
+                }
+              ],
+              "key.name" : "self.userLastNameChanger.changeLastName",
+              "key.bodyoffset" : 1267,
+              "key.bodylength" : 36,
+              "key.kind" : "source.lang.swift.expr.call",
+              "key.offset" : 1227
+            }
+          ],
+          "key.name" : "changeLastName(user:newLastName:)",
+          "key.kind" : "source.lang.swift.decl.function.method.instance",
+          "key.bodylength" : 92,
+          "key.namelength" : 60,
+          "key.offset" : 1127
+        }
+      ],
+      "key.runtime_name" : "_TtC8__main__11UserManager",
+      "key.kind" : "source.lang.swift.decl.class",
+      "key.offset" : 541,
+      "key.nameoffset" : 547,
+      "key.elements" : [
+        {
+          "key.kind" : "source.lang.swift.structure.elem.typeref",
+          "key.offset" : 560,
+          "key.length" : 13
+        }
+      ],
+      "key.name" : "UserManager",
+      "key.inheritedtypes" : [
+        {
+          "key.name" : "UserManagable"
+        }
+      ],
+      "key.bodyoffset" : 575,
+      "key.bodylength" : 734,
+      "key.namelength" : 11
+    },
+    {
+      "key.accessibility" : "source.lang.swift.accessibility.private",
+      "key.length" : 267,
+      "key.substructure" : [
+        {
+          "key.bodyoffset" : 1465,
+          "key.nameoffset" : 1380,
+          "key.accessibility" : "source.lang.swift.accessibility.private",
+          "key.length" : 210,
+          "key.substructure" : [
+            {
+              "key.nameoffset" : 1396,
+              "key.typename" : "UserRepresentable",
+              "key.length" : 23,
+              "key.name" : "user",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 1396,
+              "key.namelength" : 4
+            },
+            {
+              "key.nameoffset" : 1421,
+              "key.typename" : "String",
+              "key.length" : 20,
+              "key.name" : "newFirstName",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 1421,
+              "key.namelength" : 12
+            },
+            {
+              "key.namelength" : 4,
+              "key.nameoffset" : 1503,
+              "key.length" : 54,
+              "key.substructure" : [
+                {
+                  "key.namelength" : 9,
+                  "key.nameoffset" : 1508,
+                  "key.length" : 23,
+                  "key.name" : "firstName",
+                  "key.bodyoffset" : 1519,
+                  "key.bodylength" : 12,
+                  "key.kind" : "source.lang.swift.expr.argument",
+                  "key.offset" : 1508
+                },
+                {
+                  "key.namelength" : 8,
+                  "key.nameoffset" : 1533,
+                  "key.length" : 23,
+                  "key.name" : "lastName",
+                  "key.bodyoffset" : 1543,
+                  "key.bodylength" : 13,
+                  "key.kind" : "source.lang.swift.expr.argument",
+                  "key.offset" : 1533
+                }
+              ],
+              "key.name" : "User",
+              "key.bodyoffset" : 1508,
+              "key.bodylength" : 48,
+              "key.kind" : "source.lang.swift.expr.call",
+              "key.offset" : 1503
+            }
+          ],
+          "key.name" : "changeFirstName(user:newFirstName:)",
+          "key.kind" : "source.lang.swift.decl.function.method.instance",
+          "key.bodylength" : 119,
+          "key.namelength" : 62,
+          "key.offset" : 1375
+        }
+      ],
+      "key.runtime_name" : "_TtC8__main__20UserFirstNameChanger",
+      "key.kind" : "source.lang.swift.decl.class",
+      "key.offset" : 1320,
+      "key.nameoffset" : 1326,
+      "key.elements" : [
+        {
+          "key.kind" : "source.lang.swift.structure.elem.typeref",
+          "key.offset" : 1348,
+          "key.length" : 22
+        }
+      ],
+      "key.name" : "UserFirstNameChanger",
+      "key.inheritedtypes" : [
+        {
+          "key.name" : "UserFirstNameChangable"
+        }
+      ],
+      "key.bodyoffset" : 1372,
+      "key.bodylength" : 214,
+      "key.namelength" : 20
+    },
+    {
+      "key.accessibility" : "source.lang.swift.accessibility.private",
+      "key.length" : 263,
+      "key.substructure" : [
+        {
+          "key.bodyoffset" : 1738,
+          "key.nameoffset" : 1655,
+          "key.accessibility" : "source.lang.swift.accessibility.private",
+          "key.length" : 208,
+          "key.substructure" : [
+            {
+              "key.nameoffset" : 1670,
+              "key.typename" : "UserRepresentable",
+              "key.length" : 23,
+              "key.name" : "user",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 1670,
+              "key.namelength" : 4
+            },
+            {
+              "key.nameoffset" : 1695,
+              "key.typename" : "String",
+              "key.length" : 19,
+              "key.name" : "newLastName",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 1695,
+              "key.namelength" : 11
+            },
+            {
+              "key.namelength" : 4,
+              "key.nameoffset" : 1776,
+              "key.length" : 54,
+              "key.substructure" : [
+                {
+                  "key.namelength" : 9,
+                  "key.nameoffset" : 1781,
+                  "key.length" : 25,
+                  "key.name" : "firstName",
+                  "key.bodyoffset" : 1792,
+                  "key.bodylength" : 14,
+                  "key.kind" : "source.lang.swift.expr.argument",
+                  "key.offset" : 1781
+                },
+                {
+                  "key.namelength" : 8,
+                  "key.nameoffset" : 1808,
+                  "key.length" : 21,
+                  "key.name" : "lastName",
+                  "key.bodyoffset" : 1818,
+                  "key.bodylength" : 11,
+                  "key.kind" : "source.lang.swift.expr.argument",
+                  "key.offset" : 1808
+                }
+              ],
+              "key.name" : "User",
+              "key.bodyoffset" : 1781,
+              "key.bodylength" : 48,
+              "key.kind" : "source.lang.swift.expr.call",
+              "key.offset" : 1776
+            }
+          ],
+          "key.name" : "changeLastName(user:newLastName:)",
+          "key.kind" : "source.lang.swift.decl.function.method.instance",
+          "key.bodylength" : 119,
+          "key.namelength" : 60,
+          "key.offset" : 1650
+        }
+      ],
+      "key.runtime_name" : "_TtC8__main__19UserLastNameChanger",
+      "key.kind" : "source.lang.swift.decl.class",
+      "key.offset" : 1597,
+      "key.nameoffset" : 1603,
+      "key.elements" : [
+        {
+          "key.kind" : "source.lang.swift.structure.elem.typeref",
+          "key.offset" : 1624,
+          "key.length" : 21
+        }
+      ],
+      "key.name" : "UserLastNameChanger",
+      "key.inheritedtypes" : [
+        {
+          "key.name" : "UserLastNameChangable"
+        }
+      ],
+      "key.bodyoffset" : 1647,
+      "key.bodylength" : 212,
+      "key.namelength" : 19
+    }
+  ],
+  "key.offset" : 0,
+  "key.length" : 1861
+}

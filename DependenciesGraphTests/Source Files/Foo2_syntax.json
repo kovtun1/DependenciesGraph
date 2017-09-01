@@ -1,0 +1,67 @@
+[
+  {
+    "type" : "source.lang.swift.syntaxtype.keyword",
+    "offset" : 0,
+    "length" : 6
+  },
+  {
+    "type" : "source.lang.swift.syntaxtype.identifier",
+    "offset" : 7,
+    "length" : 5
+  },
+  {
+    "type" : "source.lang.swift.syntaxtype.keyword",
+    "offset" : 14,
+    "length" : 5
+  },
+  {
+    "type" : "source.lang.swift.syntaxtype.identifier",
+    "offset" : 20,
+    "length" : 4
+  },
+  {
+    "type" : "source.lang.swift.syntaxtype.typeidentifier",
+    "offset" : 26,
+    "length" : 8
+  },
+  {
+    "type" : "source.lang.swift.syntaxtype.keyword",
+    "offset" : 39,
+    "length" : 4
+  },
+  {
+    "type" : "source.lang.swift.syntaxtype.identifier",
+    "offset" : 44,
+    "length" : 2
+  },
+  {
+    "type" : "source.lang.swift.syntaxtype.typeidentifier",
+    "offset" : 52,
+    "length" : 5
+  },
+  {
+    "type" : "source.lang.swift.syntaxtype.keyword",
+    "offset" : 74,
+    "length" : 4
+  },
+  {
+    "type" : "source.lang.swift.syntaxtype.identifier",
+    "offset" : 79,
+    "length" : 2
+  },
+  {
+    "type" : "source.lang.swift.syntaxtype.identifier",
+    "offset" : 82,
+    "length" : 1
+  },
+  {
+    "type" : "source.lang.swift.syntaxtype.typeidentifier",
+    "offset" : 85,
+    "length" : 5
+  },
+  {
+    "type" : "source.lang.swift.syntaxtype.typeidentifier",
+    "offset" : 95,
+    "length" : 5
+  }
+]

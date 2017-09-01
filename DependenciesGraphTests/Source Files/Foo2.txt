@@ -1,0 +1,11 @@
+import Cocoa
+
+class Foo2: NSObject {
+  func f1() -> TypeA {
+    
+  }
+  
+  func f2(b: TypeB) -> TypeC {
+    
+  }
+}
