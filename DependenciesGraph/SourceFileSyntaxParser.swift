@@ -27,10 +27,12 @@ public class SourceFileSyntaxParser {
         return nil
       }
       
-      let startIndex: String.Index = sourceCode.index(sourceCode.startIndex, offsetBy: offset)
-      let end: String.Index = sourceCode.index(sourceCode.startIndex, offsetBy: offset + length)
-      let range: Range<String.Index> = startIndex ..< end
-      let type: String = sourceCode.substring(with: range)
+      let typeStartIndex: String.Index =
+        sourceCode.index(sourceCode.startIndex, offsetBy: offset)
+      let typeEndIndex: String.Index =
+        sourceCode.index(sourceCode.startIndex, offsetBy: offset + length)
+      let typeRange: Range<String.Index> = typeStartIndex ..< typeEndIndex
+      let type: String = sourceCode.substring(with: typeRange)
       
       return type
     }

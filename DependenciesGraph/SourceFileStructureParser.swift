@@ -22,7 +22,7 @@ extension Class: Equatable {
   }
 }
 
-public class SourceFileStructureParser: NSObject {
+public class SourceFileStructureParser {
   public func extractClasses(sourceFileStructure: String) -> [Class] {
     let structure = JSON(parseJSON: sourceFileStructure)
     
