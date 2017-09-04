@@ -20,21 +20,21 @@ class SourceFileSyntaxParserTests: XCTestCase {
   }
   
   func testFoo1Syntax() {
-    let extractedTypes: Set<String> = self.extractTypes(fromSourceFile: "Foo1")
+    let extractedTypes: Set<String> = self.extractTypes(fromSourceFile: "Foo1", inRange: 0..<Int.max)
     let expectedTypes: Set<String> = ["NSObject"]
     
     XCTAssertEqual(extractedTypes, expectedTypes)
   }
   
   func testFoo2Syntax() {
-    let extractedTypes: Set<String> = self.extractTypes(fromSourceFile: "Foo2")
+    let extractedTypes: Set<String> = self.extractTypes(fromSourceFile: "Foo2", inRange: 0..<Int.max)
     let expectedTypes: Set<String> = ["NSObject", "TypeA", "TypeB", "TypeC"]
     
     XCTAssertEqual(extractedTypes, expectedTypes)
   }
   
   func testFoo3Syntax() {
-    let extractedTypes: Set<String> = self.extractTypes(fromSourceFile: "Foo3")
+    let extractedTypes: Set<String> = self.extractTypes(fromSourceFile: "Foo3", inRange: 0..<Int.max)
     let expectedTypes: Set<String> = [
       "UserRepresentable",
       "UserFirstNameChangable",
@@ -46,15 +46,21 @@ class SourceFileSyntaxParserTests: XCTestCase {
     XCTAssertEqual(extractedTypes, expectedTypes)
   }
   
-  private func extractTypes(fromSourceFile fileName: String) -> Set<String> {
+  private func extractTypes(
+    fromSourceFile fileName : String,
+    inRange range           : Range<Int>
+  ) -> Set<String> {
     let fileReader = FileReader()
     let sourceFileContent: String = fileReader.readFile(withName: fileName, fileExtension: "txt")
     let syntaxFileContent: String =
       fileReader.readFile(withName: "\(fileName)_syntax", fileExtension: "json")
     
     let syntaxParser = SourceFileSyntaxParser()
-    let extractedTypes: Set<String> =
-      syntaxParser.extractTypes(fromSourceCode: sourceFileContent, syntax: syntaxFileContent)
+    let extractedTypes: Set<String> = syntaxParser.extractTypes(
+      fromSourceCode : sourceFileContent,
+      syntax         : syntaxFileContent,
+      inRange        : range
+    )
     
     return extractedTypes
   }

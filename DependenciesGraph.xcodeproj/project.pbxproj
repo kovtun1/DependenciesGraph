@@ -25,6 +25,8 @@
 		B59464491F59B52A00335E8B /* Foo3_syntax.json in Resources */ = {isa = PBXBuildFile; fileRef = B59464401F59B52A00335E8B /* Foo3_syntax.json */; };
 		B594644A1F59B52A00335E8B /* SourceFileStructureParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59464411F59B52A00335E8B /* SourceFileStructureParserTests.swift */; };
 		B594644B1F59B52A00335E8B /* SourceFileSyntaxParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59464421F59B52A00335E8B /* SourceFileSyntaxParserTests.swift */; };
+		B594644D1F5D37E800335E8B /* SourceFileClassesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594644C1F5D37E800335E8B /* SourceFileClassesParser.swift */; };
+		B594644F1F5D471000335E8B /* SourceFileClassesParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594644E1F5D471000335E8B /* SourceFileClassesParserTests.swift */; };
 		B77F52B5508B1217BDB8DA5A /* Pods_DependenciesGraphTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACA7E1885B2001227B1C208 /* Pods_DependenciesGraphTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,8 @@
 		B59464401F59B52A00335E8B /* Foo3_syntax.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Foo3_syntax.json; sourceTree = "<group>"; };
 		B59464411F59B52A00335E8B /* SourceFileStructureParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceFileStructureParserTests.swift; sourceTree = "<group>"; };
 		B59464421F59B52A00335E8B /* SourceFileSyntaxParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceFileSyntaxParserTests.swift; sourceTree = "<group>"; };
+		B594644C1F5D37E800335E8B /* SourceFileClassesParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceFileClassesParser.swift; sourceTree = "<group>"; };
+		B594644E1F5D471000335E8B /* SourceFileClassesParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceFileClassesParserTests.swift; sourceTree = "<group>"; };
 		B89623192F0331904C152063 /* Pods-DependenciesGraph.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DependenciesGraph.release.xcconfig"; path = "Pods/Target Support Files/Pods-DependenciesGraph/Pods-DependenciesGraph.release.xcconfig"; sourceTree = "<group>"; };
 		EBCAA8753E6922D0D9C0DE48 /* Pods-DependenciesGraphTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DependenciesGraphTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DependenciesGraphTests/Pods-DependenciesGraphTests.release.xcconfig"; sourceTree = "<group>"; };
 		F01B450C7450E33DE060693E /* Pods-DependenciesGraph.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DependenciesGraph.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DependenciesGraph/Pods-DependenciesGraph.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 				B59464311F59B50300335E8B /* ShellCommandsExecutor.swift */,
 				B59464331F59B50C00335E8B /* SourceFileStructureParser.swift */,
 				B59464341F59B50C00335E8B /* SourceFileSyntaxParser.swift */,
+				B594644C1F5D37E800335E8B /* SourceFileClassesParser.swift */,
 				B59464181F59B4D600335E8B /* Assets.xcassets */,
 				B594641A1F59B4D600335E8B /* Main.storyboard */,
 				B594641D1F59B4D600335E8B /* Info.plist */,
@@ -138,6 +143,7 @@
 				B59464281F59B4D700335E8B /* Info.plist */,
 				B59464411F59B52A00335E8B /* SourceFileStructureParserTests.swift */,
 				B59464421F59B52A00335E8B /* SourceFileSyntaxParserTests.swift */,
+				B594644E1F5D471000335E8B /* SourceFileClassesParserTests.swift */,
 				B59464371F59B51F00335E8B /* FileReader.swift */,
 				B59464391F59B52A00335E8B /* Source Files */,
 			);
@@ -381,6 +387,7 @@
 				B59464361F59B50C00335E8B /* SourceFileSyntaxParser.swift in Sources */,
 				B59464351F59B50C00335E8B /* SourceFileStructureParser.swift in Sources */,
 				B59464151F59B4D600335E8B /* AppDelegate.swift in Sources */,
+				B594644D1F5D37E800335E8B /* SourceFileClassesParser.swift in Sources */,
 				B59464321F59B50300335E8B /* ShellCommandsExecutor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B594644F1F5D471000335E8B /* SourceFileClassesParserTests.swift in Sources */,
 				B59464381F59B51F00335E8B /* FileReader.swift in Sources */,
 				B594644A1F59B52A00335E8B /* SourceFileStructureParserTests.swift in Sources */,
 				B594644B1F59B52A00335E8B /* SourceFileSyntaxParserTests.swift in Sources */,
@@ -588,6 +596,7 @@
 				B594642D1F59B4D700335E8B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B594642E1F59B4D700335E8B /* Build configuration list for PBXNativeTarget "DependenciesGraphTests" */ = {
 			isa = XCConfigurationList;
@@ -596,6 +605,7 @@
 				B59464301F59B4D700335E8B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

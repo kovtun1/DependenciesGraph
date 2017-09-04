@@ -10,7 +10,11 @@ import Cocoa
 import SwiftyJSON
 
 public class SourceFileSyntaxParser {
-  public func extractTypes(fromSourceCode sourceCode: String, syntax: String) -> Set<String> {
+  public func extractTypes(
+    fromSourceCode sourceCode : String,
+    syntax                    : String,
+    inRange range             : Range<Int>
+  ) -> Set<String> {
     let syntaxJson = JSON.parse(syntax)
     
     guard let syntaxItems: [JSON] = syntaxJson.array else {
@@ -22,7 +26,8 @@ public class SourceFileSyntaxParser {
       guard
         syntaxItem["type"].string == "source.lang.swift.syntaxtype.typeidentifier",
         let offset: Int = syntaxItem["offset"].int,
-        let length: Int = syntaxItem["length"].int
+        let length: Int = syntaxItem["length"].int,
+        range.contains(offset) && range.contains(offset + length)
       else {
         return nil
       }
