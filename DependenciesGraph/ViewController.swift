@@ -52,8 +52,10 @@ class ViewController: NSViewController {
     let sourceFilePath: String =
       sourceFileUrl.absoluteString.replacingOccurrences(of: "file:///", with: "/")
     
+    let sourceCodeReader = SourceCodeReader()
+    
     do {
-      let sourceCode: String = try String(contentsOfFile: sourceFilePath)
+      let sourceCode: String = try sourceCodeReader.readSourceCode(from: sourceFilePath)
       let syntax: String = self.createSyntaxForSourceFile(at: sourceFilePath)
       let structure: String = self.createStructureForSourceFile(at: sourceFilePath)
       let structureParser = SourceFileStructureParser()

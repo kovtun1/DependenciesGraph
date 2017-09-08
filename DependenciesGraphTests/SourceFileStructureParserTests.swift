@@ -36,4 +36,22 @@ class SourceFileStructureParserTests: XCTestCase {
     
     XCTAssertEqual(extractedClasses, expectedClasses)
   }
+  
+  func testAddToDoTableViewControllerSceneStructure() {
+    let fileReader = FileReader()
+    let structureFileContent: String = fileReader.readFile(
+      withName      : "AddToDoTableViewControllerScene_structure",
+      fileExtension : "json"
+    )
+    
+    let structureParser = SourceFileStructureParser()
+    let extractedClasses: [Class] =
+      structureParser.extractClasses(sourceFileStructure: structureFileContent)
+    
+    let expectedClasses: [Class] = [
+      Class(name: "AddToDoTableViewControllerScene", bodyOffset: 260, bodyLength: 1729)
+    ]
+    
+    XCTAssertEqual(extractedClasses, expectedClasses)
+  }
 }

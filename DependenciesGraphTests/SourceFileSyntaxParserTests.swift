@@ -46,6 +46,29 @@ class SourceFileSyntaxParserTests: XCTestCase {
     XCTAssertEqual(extractedTypes, expectedTypes)
   }
   
+  func testAddToDoTableViewControllerSceneSyntax() {
+    let extractedTypes: Set<String> =
+      self.extractTypes(fromSourceFile: "AddToDoTableViewControllerScene", inRange: 0 ..< Int.max)
+    
+    let expectedType: Set<String> = [
+      "UIViewController",
+      "Void",
+      "AddToDoTableViewControllerScene",
+      "ViewControllersCreatable",
+      "AddToDoControllable",
+      "UITableViewControllerContainable",
+      "EditToDoSceneInteractionsHandleable",
+      "AddToDoSceneDataServable",
+      "UITableViewController",
+      "AddToDoScene",
+      "UITableViewCellsRegisterable"
+    ]
+    
+    XCTAssertEqual(extractedTypes, expectedType)
+  }
+  
+  // MARK: - private
+  
   private func extractTypes(
     fromSourceFile fileName : String,
     inRange range           : Range<Int>

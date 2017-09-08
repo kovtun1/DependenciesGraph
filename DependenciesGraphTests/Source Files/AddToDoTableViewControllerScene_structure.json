@@ -1,0 +1,414 @@
+{
+  "key.diagnostic_stage" : "source.diagnostic.stage.swift.parse",
+  "key.substructure" : [
+    {
+      "key.offset" : 221,
+      "key.nameoffset" : 227,
+      "key.bodyoffset" : 260,
+      "key.accessibility" : "source.lang.swift.accessibility.public",
+      "key.substructure" : [
+        {
+          "key.nameoffset" : 275,
+          "key.accessibility" : "source.lang.swift.accessibility.private",
+          "key.length" : 42,
+          "key.typename" : "ViewControllersCreatable",
+          "key.name" : "vcsCreatable",
+          "key.kind" : "source.lang.swift.decl.var.instance",
+          "key.namelength" : 12,
+          "key.offset" : 271
+        },
+        {
+          "key.nameoffset" : 335,
+          "key.accessibility" : "source.lang.swift.accessibility.fileprivate",
+          "key.length" : 50,
+          "key.typename" : "AddToDoControllable",
+          "key.name" : "addToDoControllable",
+          "key.kind" : "source.lang.swift.decl.var.instance",
+          "key.namelength" : 19,
+          "key.offset" : 331
+        },
+        {
+          "key.nameoffset" : 400,
+          "key.accessibility" : "source.lang.swift.accessibility.fileprivate",
+          "key.length" : 55,
+          "key.typename" : "AddToDoSceneDataServable",
+          "key.name" : "addToDoSceneDataServable",
+          "key.kind" : "source.lang.swift.decl.var.instance",
+          "key.namelength" : 24,
+          "key.offset" : 396
+        },
+        {
+          "key.nameoffset" : 468,
+          "key.accessibility" : "source.lang.swift.accessibility.public",
+          "key.length" : 46,
+          "key.typename" : "UITableViewController",
+          "key.name" : "tableViewController",
+          "key.kind" : "source.lang.swift.decl.var.instance",
+          "key.namelength" : 19,
+          "key.offset" : 464
+        },
+        {
+          "key.bodyoffset" : 765,
+          "key.nameoffset" : 523,
+          "key.accessibility" : "source.lang.swift.accessibility.public",
+          "key.length" : 1465,
+          "key.substructure" : [
+            {
+              "key.nameoffset" : 533,
+              "key.typename" : "AddToDoControllable",
+              "key.length" : 49,
+              "key.name" : "addToDoControllable",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 533,
+              "key.namelength" : 19
+            },
+            {
+              "key.nameoffset" : 588,
+              "key.typename" : "UITableViewController",
+              "key.length" : 51,
+              "key.name" : "tableViewController",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 588,
+              "key.namelength" : 19
+            },
+            {
+              "key.nameoffset" : 645,
+              "key.typename" : "AddToDoSceneDataServable",
+              "key.length" : 54,
+              "key.name" : "addToDoSceneDataServable",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 645,
+              "key.namelength" : 24
+            },
+            {
+              "key.nameoffset" : 705,
+              "key.typename" : "ViewControllersCreatable",
+              "key.length" : 54,
+              "key.name" : "vcsCreatable",
+              "key.kind" : "source.lang.swift.decl.var.parameter",
+              "key.offset" : 705,
+              "key.namelength" : 12
+            },
+            {
+              "key.namelength" : 84,
+              "key.nameoffset" : 1152,
+              "key.length" : 137,
+              "key.substructure" : [
+                {
+                  "key.namelength" : 3,
+                  "key.nameoffset" : 1244,
+                  "key.length" : 39,
+                  "key.name" : "for",
+                  "key.bodyoffset" : 1249,
+                  "key.bodylength" : 34,
+                  "key.kind" : "source.lang.swift.expr.argument",
+                  "key.offset" : 1244
+                }
+              ],
+              "key.name" : "(self.addToDoControllable.dataSource as! UITableViewCellsRegisterable).registerCells",
+              "key.bodyoffset" : 1237,
+              "key.bodylength" : 51,
+              "key.kind" : "source.lang.swift.expr.call",
+              "key.offset" : 1152
+            },
+            {
+              "key.namelength" : 54,
+              "key.nameoffset" : 1423,
+              "key.length" : 561,
+              "key.substructure" : [
+                {
+                  "key.namelength" : 0,
+                  "key.nameoffset" : 0,
+                  "key.length" : 506,
+                  "key.substructure" : [
+                    {
+                      "key.namelength" : 33,
+                      "key.nameoffset" : 1540,
+                      "key.length" : 71,
+                      "key.name" : "self.addToDoSceneDataServable.add",
+                      "key.bodyoffset" : 1574,
+                      "key.bodylength" : 36,
+                      "key.kind" : "source.lang.swift.expr.call",
+                      "key.offset" : 1540
+                    },
+                    {
+                      "key.nameoffset" : 0,
+                      "key.elements" : [
+                        {
+                          "key.kind" : "source.lang.swift.structure.elem.expr",
+                          "key.offset" : 1632,
+                          "key.length" : 6
+                        }
+                      ],
+                      "key.length" : 353,
+                      "key.substructure" : [
+                        {
+                          "key.nameoffset" : 0,
+                          "key.elements" : [
+                            {
+                              "key.kind" : "source.lang.swift.structure.elem.pattern",
+                              "key.offset" : 1652,
+                              "key.length" : 8
+                            }
+                          ],
+                          "key.length" : 103,
+                          "key.substructure" : [
+                            {
+                              "key.namelength" : 64,
+                              "key.nameoffset" : 1670,
+                              "key.length" : 80,
+                              "key.substructure" : [
+                                {
+                                  "key.namelength" : 8,
+                                  "key.nameoffset" : 1735,
+                                  "key.length" : 14,
+                                  "key.name" : "animated",
+                                  "key.bodyoffset" : 1745,
+                                  "key.bodylength" : 4,
+                                  "key.kind" : "source.lang.swift.expr.argument",
+                                  "key.offset" : 1735
+                                }
+                              ],
+                              "key.name" : "self.tableViewController.navigationController?.popViewController",
+                              "key.bodyoffset" : 1735,
+                              "key.bodylength" : 14,
+                              "key.kind" : "source.lang.swift.expr.call",
+                              "key.offset" : 1670
+                            }
+                          ],
+                          "key.kind" : "source.lang.swift.stmt.case",
+                          "key.offset" : 1647,
+                          "key.namelength" : 0
+                        },
+                        {
+                          "key.nameoffset" : 0,
+                          "key.elements" : [
+                            {
+                              "key.kind" : "source.lang.swift.structure.elem.pattern",
+                              "key.offset" : 1762,
+                              "key.length" : 17
+                            }
+                          ],
+                          "key.length" : 213,
+                          "key.substructure" : [
+                            {
+                              "key.namelength" : 41,
+                              "key.nameoffset" : 1819,
+                              "key.length" : 61,
+                              "key.substructure" : [
+                                {
+                                  "key.namelength" : 11,
+                                  "key.nameoffset" : 1861,
+                                  "key.length" : 18,
+                                  "key.name" : "withMessage",
+                                  "key.bodyoffset" : 1874,
+                                  "key.bodylength" : 5,
+                                  "key.kind" : "source.lang.swift.expr.argument",
+                                  "key.offset" : 1861
+                                }
+                              ],
+                              "key.name" : "self.vcsCreatable.createErrorMessageAlert",
+                              "key.bodyoffset" : 1861,
+                              "key.bodylength" : 18,
+                              "key.kind" : "source.lang.swift.expr.call",
+                              "key.offset" : 1819
+                            },
+                            {
+                              "key.namelength" : 32,
+                              "key.nameoffset" : 1898,
+                              "key.length" : 72,
+                              "key.substructure" : [
+                                {
+                                  "key.namelength" : 0,
+                                  "key.nameoffset" : 0,
+                                  "key.length" : 5,
+                                  "key.bodyoffset" : 1931,
+                                  "key.offset" : 1931,
+                                  "key.bodylength" : 5,
+                                  "key.kind" : "source.lang.swift.expr.argument"
+                                },
+                                {
+                                  "key.namelength" : 8,
+                                  "key.nameoffset" : 1938,
+                                  "key.length" : 14,
+                                  "key.name" : "animated",
+                                  "key.bodyoffset" : 1948,
+                                  "key.bodylength" : 4,
+                                  "key.kind" : "source.lang.swift.expr.argument",
+                                  "key.offset" : 1938
+                                },
+                                {
+                                  "key.namelength" : 10,
+                                  "key.nameoffset" : 1954,
+                                  "key.length" : 15,
+                                  "key.name" : "completion",
+                                  "key.bodyoffset" : 1966,
+                                  "key.bodylength" : 3,
+                                  "key.kind" : "source.lang.swift.expr.argument",
+                                  "key.offset" : 1954
+                                }
+                              ],
+                              "key.name" : "self.tableViewController.present",
+                              "key.bodyoffset" : 1931,
+                              "key.bodylength" : 38,
+                              "key.kind" : "source.lang.swift.expr.call",
+                              "key.offset" : 1898
+                            }
+                          ],
+                          "key.kind" : "source.lang.swift.stmt.case",
+                          "key.offset" : 1757,
+                          "key.namelength" : 0
+                        }
+                      ],
+                      "key.kind" : "source.lang.swift.stmt.switch",
+                      "key.offset" : 1625,
+                      "key.namelength" : 0
+                    }
+                  ],
+                  "key.kind" : "source.lang.swift.stmt.brace",
+                  "key.bodyoffset" : 1479,
+                  "key.bodylength" : 504,
+                  "key.offset" : 1478
+                }
+              ],
+              "key.name" : "editToDoSceneInteractionsHandleable.setSaveButtonTouch",
+              "key.bodyoffset" : 1479,
+              "key.bodylength" : 504,
+              "key.kind" : "source.lang.swift.expr.call",
+              "key.offset" : 1423
+            }
+          ],
+          "key.name" : "init(addToDoControllable:tableViewController:addToDoSceneDataServable:vcsCreatable:)",
+          "key.kind" : "source.lang.swift.decl.function.method.instance",
+          "key.bodylength" : 1222,
+          "key.namelength" : 240,
+          "key.offset" : 523
+        }
+      ],
+      "key.length" : 1769,
+      "key.runtime_name" : "_TtC8__main__31AddToDoTableViewControllerScene",
+      "key.name" : "AddToDoTableViewControllerScene",
+      "key.kind" : "source.lang.swift.decl.class",
+      "key.bodylength" : 1729,
+      "key.attributes" : [
+        {
+          "key.attribute" : "source.decl.attribute.final"
+        }
+      ],
+      "key.namelength" : 31
+    },
+    {
+      "key.namelength" : 31,
+      "key.nameoffset" : 2002,
+      "key.elements" : [
+        {
+          "key.kind" : "source.lang.swift.structure.elem.typeref",
+          "key.offset" : 2035,
+          "key.length" : 32
+        }
+      ],
+      "key.length" : 82,
+      "key.name" : "AddToDoTableViewControllerScene",
+      "key.inheritedtypes" : [
+        {
+          "key.name" : "UITableViewControllerContainable"
+        }
+      ],
+      "key.bodyoffset" : 2069,
+      "key.bodylength" : 4,
+      "key.kind" : "source.lang.swift.decl.extension",
+      "key.offset" : 1992
+    },
+    {
+      "key.namelength" : 31,
+      "key.nameoffset" : 2086,
+      "key.elements" : [
+        {
+          "key.kind" : "source.lang.swift.structure.elem.typeref",
+          "key.offset" : 2119,
+          "key.length" : 12
+        }
+      ],
+      "key.length" : 258,
+      "key.substructure" : [
+        {
+          "key.bodyoffset" : 2157,
+          "key.nameoffset" : 2148,
+          "key.accessibility" : "source.lang.swift.accessibility.public",
+          "key.length" : 189,
+          "key.substructure" : [
+            {
+              "key.namelength" : 17,
+              "key.nameoffset" : 2178,
+              "key.length" : 45,
+              "key.substructure" : [
+                {
+                  "key.namelength" : 5,
+                  "key.nameoffset" : 2196,
+                  "key.length" : 9,
+                  "key.name" : "title",
+                  "key.bodyoffset" : 2203,
+                  "key.bodylength" : 2,
+                  "key.kind" : "source.lang.swift.expr.argument",
+                  "key.offset" : 2196
+                },
+                {
+                  "key.namelength" : 11,
+                  "key.nameoffset" : 2207,
+                  "key.length" : 15,
+                  "key.name" : "description",
+                  "key.bodyoffset" : 2220,
+                  "key.bodylength" : 2,
+                  "key.kind" : "source.lang.swift.expr.argument",
+                  "key.offset" : 2207
+                }
+              ],
+              "key.name" : "Presentation.ToDo",
+              "key.bodyoffset" : 2196,
+              "key.bodylength" : 26,
+              "key.kind" : "source.lang.swift.expr.call",
+              "key.offset" : 2178
+            },
+            {
+              "key.namelength" : 32,
+              "key.nameoffset" : 2233,
+              "key.length" : 43,
+              "key.name" : "self.addToDoControllable.setToDo",
+              "key.bodyoffset" : 2266,
+              "key.bodylength" : 9,
+              "key.kind" : "source.lang.swift.expr.call",
+              "key.offset" : 2233
+            },
+            {
+              "key.namelength" : 45,
+              "key.nameoffset" : 2281,
+              "key.length" : 47,
+              "key.name" : "self.tableViewController.tableView.reloadData",
+              "key.bodyoffset" : 2327,
+              "key.bodylength" : 0,
+              "key.kind" : "source.lang.swift.expr.call",
+              "key.offset" : 2281
+            }
+          ],
+          "key.name" : "reset()",
+          "key.kind" : "source.lang.swift.decl.function.method.instance",
+          "key.bodylength" : 174,
+          "key.namelength" : 7,
+          "key.offset" : 2143
+        }
+      ],
+      "key.name" : "AddToDoTableViewControllerScene",
+      "key.inheritedtypes" : [
+        {
+          "key.name" : "AddToDoScene"
+        }
+      ],
+      "key.bodyoffset" : 2133,
+      "key.bodylength" : 200,
+      "key.kind" : "source.lang.swift.decl.extension",
+      "key.offset" : 2076
+    }
+  ],
+  "key.offset" : 0,
+  "key.length" : 2335
+}

@@ -30,6 +30,10 @@
 		B594655D1F61B31200335E8B /* DependenciesGraphCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594655C1F61B31200335E8B /* DependenciesGraphCodeGenerator.swift */; };
 		B594655F1F61B31F00335E8B /* DependenciesGraphCodeGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594655E1F61B31F00335E8B /* DependenciesGraphCodeGeneratorTests.swift */; };
 		B59465611F627C4400335E8B /* DependenciesGraphImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59465601F627C4400335E8B /* DependenciesGraphImageGenerator.swift */; };
+		B59465631F628CAC00335E8B /* AddToDoTableViewControllerScene.txt in Resources */ = {isa = PBXBuildFile; fileRef = B59465621F628CAC00335E8B /* AddToDoTableViewControllerScene.txt */; };
+		B59465661F628D4800335E8B /* AddToDoTableViewControllerScene_structure.json in Resources */ = {isa = PBXBuildFile; fileRef = B59465641F628D4800335E8B /* AddToDoTableViewControllerScene_structure.json */; };
+		B59465671F628D4800335E8B /* AddToDoTableViewControllerScene_syntax.json in Resources */ = {isa = PBXBuildFile; fileRef = B59465651F628D4800335E8B /* AddToDoTableViewControllerScene_syntax.json */; };
+		B59465691F62A23A00335E8B /* SourceCodeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59465681F62A23A00335E8B /* SourceCodeReader.swift */; };
 		B77F52B5508B1217BDB8DA5A /* Pods_DependenciesGraphTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACA7E1885B2001227B1C208 /* Pods_DependenciesGraphTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +76,10 @@
 		B594655C1F61B31200335E8B /* DependenciesGraphCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependenciesGraphCodeGenerator.swift; sourceTree = "<group>"; };
 		B594655E1F61B31F00335E8B /* DependenciesGraphCodeGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependenciesGraphCodeGeneratorTests.swift; sourceTree = "<group>"; };
 		B59465601F627C4400335E8B /* DependenciesGraphImageGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependenciesGraphImageGenerator.swift; sourceTree = "<group>"; };
+		B59465621F628CAC00335E8B /* AddToDoTableViewControllerScene.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AddToDoTableViewControllerScene.txt; sourceTree = "<group>"; };
+		B59465641F628D4800335E8B /* AddToDoTableViewControllerScene_structure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AddToDoTableViewControllerScene_structure.json; sourceTree = "<group>"; };
+		B59465651F628D4800335E8B /* AddToDoTableViewControllerScene_syntax.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AddToDoTableViewControllerScene_syntax.json; sourceTree = "<group>"; };
+		B59465681F62A23A00335E8B /* SourceCodeReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceCodeReader.swift; sourceTree = "<group>"; };
 		B89623192F0331904C152063 /* Pods-DependenciesGraph.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DependenciesGraph.release.xcconfig"; path = "Pods/Target Support Files/Pods-DependenciesGraph/Pods-DependenciesGraph.release.xcconfig"; sourceTree = "<group>"; };
 		EBCAA8753E6922D0D9C0DE48 /* Pods-DependenciesGraphTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DependenciesGraphTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DependenciesGraphTests/Pods-DependenciesGraphTests.release.xcconfig"; sourceTree = "<group>"; };
 		F01B450C7450E33DE060693E /* Pods-DependenciesGraph.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DependenciesGraph.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DependenciesGraph/Pods-DependenciesGraph.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +146,7 @@
 				B594644C1F5D37E800335E8B /* SourceFileClassesParser.swift */,
 				B594655C1F61B31200335E8B /* DependenciesGraphCodeGenerator.swift */,
 				B59465601F627C4400335E8B /* DependenciesGraphImageGenerator.swift */,
+				B59465681F62A23A00335E8B /* SourceCodeReader.swift */,
 				B59464181F59B4D600335E8B /* Assets.xcassets */,
 				B594641A1F59B4D600335E8B /* Main.storyboard */,
 				B594641D1F59B4D600335E8B /* Info.plist */,
@@ -169,6 +178,9 @@
 				B594643E1F59B52A00335E8B /* Foo3.txt */,
 				B594643F1F59B52A00335E8B /* Foo3_structure.json */,
 				B59464401F59B52A00335E8B /* Foo3_syntax.json */,
+				B59465621F628CAC00335E8B /* AddToDoTableViewControllerScene.txt */,
+				B59465641F628D4800335E8B /* AddToDoTableViewControllerScene_structure.json */,
+				B59465651F628D4800335E8B /* AddToDoTableViewControllerScene_syntax.json */,
 			);
 			path = "Source Files";
 			sourceTree = "<group>";
@@ -289,6 +301,9 @@
 				B59464441F59B52A00335E8B /* Foo1_syntax.json in Resources */,
 				B59464491F59B52A00335E8B /* Foo3_syntax.json in Resources */,
 				B59464451F59B52A00335E8B /* Foo2.txt in Resources */,
+				B59465631F628CAC00335E8B /* AddToDoTableViewControllerScene.txt in Resources */,
+				B59465661F628D4800335E8B /* AddToDoTableViewControllerScene_structure.json in Resources */,
+				B59465671F628D4800335E8B /* AddToDoTableViewControllerScene_syntax.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +412,7 @@
 				B594655D1F61B31200335E8B /* DependenciesGraphCodeGenerator.swift in Sources */,
 				B59465611F627C4400335E8B /* DependenciesGraphImageGenerator.swift in Sources */,
 				B59464351F59B50C00335E8B /* SourceFileStructureParser.swift in Sources */,
+				B59465691F62A23A00335E8B /* SourceCodeReader.swift in Sources */,
 				B59464151F59B4D600335E8B /* AppDelegate.swift in Sources */,
 				B594644D1F5D37E800335E8B /* SourceFileClassesParser.swift in Sources */,
 				B59464321F59B50300335E8B /* ShellCommandsExecutor.swift in Sources */,

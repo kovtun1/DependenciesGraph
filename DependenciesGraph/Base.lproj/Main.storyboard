@@ -143,6 +143,10 @@
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MVG-OY-wSN">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="768" id="1ul-VM-rE5"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="1024" id="VIy-co-fzZ"/>
+                                </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="LUU-1K-f1z"/>
                             </imageView>
                         </subviews>
