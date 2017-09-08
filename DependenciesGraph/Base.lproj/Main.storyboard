@@ -133,12 +133,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wog-Pe-Wmh">
+                                <rect key="frame" x="82" y="127" width="315" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Please open a .swift file using File -&gt; Open... menu." id="qLj-Vw-yN1">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MVG-OY-wSN">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="LUU-1K-f1z"/>
                             </imageView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Wog-Pe-Wmh" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="4sg-NI-7L9"/>
+                            <constraint firstItem="Wog-Pe-Wmh" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="OiP-XF-VYg"/>
                             <constraint firstItem="MVG-OY-wSN" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="Tlx-Qr-g5F"/>
                             <constraint firstItem="MVG-OY-wSN" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="US3-mP-gHB"/>
                             <constraint firstAttribute="bottom" secondItem="MVG-OY-wSN" secondAttribute="bottom" id="v9m-uH-gsx"/>
@@ -147,6 +157,7 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="MVG-OY-wSN" id="dcJ-1C-efl"/>
+                        <outlet property="instructionsTextField" destination="Wog-Pe-Wmh" id="cmk-Re-wsM"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

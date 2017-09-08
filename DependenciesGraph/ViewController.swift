@@ -9,13 +9,18 @@
 import Cocoa
 
 class ViewController: NSViewController {
-  @IBOutlet weak var imageView: NSImageView!
-  
-  private var timer: Timer!
+  @IBOutlet private weak var instructionsTextField : NSTextField!
+  @IBOutlet private weak var imageView             : NSImageView!
   
   internal var sourceFileUrl: URL? {
     didSet {
-      self.f()
+      if let _ = sourceFileUrl {
+        self.instructionsTextField.isHidden = false
+      } else {
+        self.instructionsTextField.isHidden = true
+      }
+      
+      self.update()
     }
   }
   
@@ -25,8 +30,7 @@ class ViewController: NSViewController {
     Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {
       [unowned self]
       (timer: Timer) in
-      print("tick")
-      self.f()
+      self.update()
     }
   }
   
@@ -36,10 +40,12 @@ class ViewController: NSViewController {
     }
   }
   
-  // MARK: -
+  // MARK: - Update
   
-  private func f() {
+  private func update() {
     guard let sourceFileUrl = self.sourceFileUrl else {
+      self.imageView.image = nil
+      
       return
     }
     
@@ -50,9 +56,9 @@ class ViewController: NSViewController {
       let sourceCode: String = try String(contentsOfFile: sourceFilePath)
       let syntax: String = self.createSyntaxForSourceFile(at: sourceFilePath)
       let structure: String = self.createStructureForSourceFile(at: sourceFilePath)
-      
       let structureParser = SourceFileStructureParser()
       let syntaxParser = SourceFileSyntaxParser()
+      
       let classesParser =
         SourceFileClassesParser(structureParser: structureParser, syntaxParser: syntaxParser)
       
@@ -64,7 +70,10 @@ class ViewController: NSViewController {
       )
       
       let dependenciesGraphCodeGenerator = DependenciesGraphCodeGenerator()
-      let graphCode: String = dependenciesGraphCodeGenerator.generateCode(forClassesTypes: classTypes)
+      
+      let graphCode: String =
+        dependenciesGraphCodeGenerator.generateCode(forClassesTypes: classTypes)
+      
       let graphImageGenerator =
         DependenciesGraphImageGenerator(dotBinaryPath: "/usr/local/Cellar/graphviz/2.40.1/bin/dot")
       
