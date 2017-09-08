@@ -24,6 +24,9 @@ class ViewController: NSViewController {
     }
   }
   
+  internal var sourceKittenBinaryPath : String!
+  internal var graphvizDotBinaryPath  : String!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -77,7 +80,7 @@ class ViewController: NSViewController {
         dependenciesGraphCodeGenerator.generateCode(forClassesTypes: classTypes)
       
       let graphImageGenerator =
-        DependenciesGraphImageGenerator(dotBinaryPath: "/usr/local/Cellar/graphviz/2.40.1/bin/dot")
+        DependenciesGraphImageGenerator(dotBinaryPath: self.graphvizDotBinaryPath)
       
       guard let graphImage: NSImage = graphImageGenerator.generateImage(from: graphCode) else {
         return
@@ -102,7 +105,7 @@ class ViewController: NSViewController {
   private func executeSourceKitten(withCommand command: String, sourceFilePath: String) -> String {
     let shell = ShellCommandsExecutor()
     let data = shell.execute(
-      launchPath : "/usr/local/Cellar/sourcekitten/0.18.1/bin/sourcekitten",
+      launchPath : self.sourceKittenBinaryPath,
       arguments  : [command, "--file", sourceFilePath]
     )
     let string = String(data: data, encoding: String.Encoding.utf8)!

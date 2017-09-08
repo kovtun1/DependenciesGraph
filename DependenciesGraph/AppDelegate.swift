@@ -11,7 +11,15 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-    // Insert code here to initialize your application
+    let vc: ViewController? =
+      NSApplication.shared().mainWindow?.contentViewController as? ViewController
+    
+    // in case you installed SourceKitten and graphviz via Homebrew:
+    // sourceKittenBinaryPath = "/usr/local/Cellar/<VERSION_FOLDER>/bin/sourcekitten"
+    // graphvizDotBinaryPath = "/usr/local/Cellar/graphviz/<VERSION_FOLDER>/bin/dot"
+    
+    vc?.sourceKittenBinaryPath =
+    vc?.graphvizDotBinaryPath =
   }
   
   func applicationWillTerminate(_ aNotification: Notification) {
