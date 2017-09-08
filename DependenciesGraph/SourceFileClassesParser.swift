@@ -33,11 +33,13 @@ public class SourceFileClassesParser {
     structure                 : String,
     syntax                    : String
   ) -> [ClassTypes] {
-    let classes: [Class] = self.structureParser.extractClasses(sourceFileStructure: structure)
-    let classesTypes: [ClassTypes] = classes.map {
-      (`class`: Class) -> ClassTypes in
+    let classStructures: [ClassStructure] =
+      self.structureParser.extractClassStructures(sourceFileStructure: structure)
+    
+    let classesTypes: [ClassTypes] = classStructures.map {
+      (classStructure: ClassStructure) -> ClassTypes in
       let classBodyRange: Range<Int> =
-        `class`.bodyOffset ..< (`class`.bodyOffset + `class`.bodyLength)
+        classStructure.bodyOffset ..< (classStructure.bodyOffset + classStructure.bodyLength)
       
       let classTypes: Set<String> = self.syntaxParser.extractTypes(
         fromSourceCode : sourceCode,
@@ -45,7 +47,7 @@ public class SourceFileClassesParser {
         inRange        : classBodyRange
       )
       
-      return ClassTypes(className: `class`.name, classTypes: classTypes)
+      return ClassTypes(className: classStructure.name, classTypes: classTypes)
     }
     
     return classesTypes

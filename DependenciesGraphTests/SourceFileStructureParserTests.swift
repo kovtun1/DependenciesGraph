@@ -25,16 +25,16 @@ class SourceFileStructureParserTests: XCTestCase {
       fileReader.readFile(withName: "Foo3_structure", fileExtension: "json")
     
     let structureParser = SourceFileStructureParser()
-    let extractedClasses: [Class] =
-      structureParser.extractClasses(sourceFileStructure: structureFileContent)
+    let extractedClassStructures: [ClassStructure] =
+      structureParser.extractClassStructures(sourceFileStructure: structureFileContent)
     
-    let expectedClasses: [Class] = [
-      Class(name: "UserManager", bodyOffset: 575, bodyLength: 734),
-      Class(name: "UserFirstNameChanger", bodyOffset: 1372, bodyLength: 214),
-      Class(name: "UserLastNameChanger", bodyOffset: 1647, bodyLength: 212)
+    let expectedClassStructures: [ClassStructure] = [
+      ClassStructure(name: "UserManager", bodyOffset: 575, bodyLength: 734),
+      ClassStructure(name: "UserFirstNameChanger", bodyOffset: 1372, bodyLength: 214),
+      ClassStructure(name: "UserLastNameChanger", bodyOffset: 1647, bodyLength: 212)
     ]
     
-    XCTAssertEqual(extractedClasses, expectedClasses)
+    XCTAssertEqual(extractedClassStructures, expectedClassStructures)
   }
   
   func testAddToDoTableViewControllerSceneStructure() {
@@ -45,13 +45,13 @@ class SourceFileStructureParserTests: XCTestCase {
     )
     
     let structureParser = SourceFileStructureParser()
-    let extractedClasses: [Class] =
-      structureParser.extractClasses(sourceFileStructure: structureFileContent)
+    let extractedClassStructures: [ClassStructure] =
+      structureParser.extractClassStructures(sourceFileStructure: structureFileContent)
     
-    let expectedClasses: [Class] = [
-      Class(name: "AddToDoTableViewControllerScene", bodyOffset: 260, bodyLength: 1729)
+    let expectedClassStructures: [ClassStructure] = [
+      ClassStructure(name: "AddToDoTableViewControllerScene", bodyOffset: 260, bodyLength: 1729)
     ]
     
-    XCTAssertEqual(extractedClasses, expectedClasses)
+    XCTAssertEqual(extractedClassStructures, expectedClassStructures)
   }
 }

@@ -9,29 +9,29 @@
 import Cocoa
 import SwiftyJSON
 
-public struct Class {
+public struct ClassStructure {
   let name       : String
   let bodyOffset : Int
   let bodyLength : Int
 }
 
-extension Class: Equatable {
-  public static func ==(lhs: Class, rhs: Class) -> Bool {
+extension ClassStructure: Equatable {
+  public static func ==(lhs: ClassStructure, rhs: ClassStructure) -> Bool {
     return
       lhs.name == rhs.name && lhs.bodyOffset == rhs.bodyOffset && lhs.bodyLength == rhs.bodyLength
   }
 }
 
 public class SourceFileStructureParser {
-  public func extractClasses(sourceFileStructure: String) -> [Class] {
+  public func extractClassStructures(sourceFileStructure: String) -> [ClassStructure] {
     let structure = JSON(parseJSON: sourceFileStructure)
     
     guard let structureItems: [JSON] = structure["key.substructure"].array else {
       return []
     }
     
-    let classes: [Class] = structureItems.flatMap {
-      (structureItem: JSON) -> Class? in
+    let classes: [ClassStructure] = structureItems.flatMap {
+      (structureItem: JSON) -> ClassStructure? in
       guard
         structureItem["key.kind"] == "source.lang.swift.decl.class",
         let name: String = structureItem["key.name"].string,
@@ -41,9 +41,10 @@ public class SourceFileStructureParser {
         return nil
       }
       
-      let `class` = Class(name: name, bodyOffset: bodyOffset, bodyLength: bodyLength)
+      let classStructure =
+        ClassStructure(name: name, bodyOffset: bodyOffset, bodyLength: bodyLength)
       
-      return `class`
+      return classStructure
     }
     
     return classes
