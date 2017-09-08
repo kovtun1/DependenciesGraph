@@ -10,12 +10,18 @@ import Foundation
 import Cocoa
 
 internal class DependenciesGraphImageGenerator {
+  private let dotBinaryPath: String
+  
+  internal init(dotBinaryPath: String) {
+    self.dotBinaryPath = dotBinaryPath
+  }
+  
   internal func generateImage(from graphCode: String) -> NSImage? {
     guard let grahpCodeData: Data = graphCode.data(using: String.Encoding.utf8) else {
       return nil
     }
     
-    let graphSourceFilePath: String = "/Users/okovtun-lp/Desktop/1.dot"
+    let graphSourceFilePath: String = NSTemporaryDirectory() + "graph.dot"
     let successfullyCreatedGraphSourceFile: Bool = FileManager.default.createFile(
       atPath     : graphSourceFilePath,
       contents   : grahpCodeData,
@@ -26,7 +32,7 @@ internal class DependenciesGraphImageGenerator {
       return nil
     }
     
-    let graphImage: NSImage? = self.creteGraphImage(dotFilePath: "/Users/okovtun-lp/Desktop/1.dot")
+    let graphImage: NSImage? = self.creteGraphImage(dotFilePath: graphSourceFilePath)
     
     try? FileManager.default.removeItem(atPath: graphSourceFilePath)
     
@@ -37,13 +43,7 @@ internal class DependenciesGraphImageGenerator {
   
   private func creteGraphImage(dotFilePath: String) -> NSImage? {
     let shell = ShellCommandsExecutor()
-    let data = shell.execute(
-      launchPath : "/usr/local/Cellar/graphviz/2.40.1/bin/dot",
-      arguments  : ["-Tpng", dotFilePath]
-    )
-    
-    print(data)
-    
+    let data = shell.execute(launchPath: self.dotBinaryPath, arguments: ["-Tpng", dotFilePath])
     let image = NSImage(data: data)
     
     return image
