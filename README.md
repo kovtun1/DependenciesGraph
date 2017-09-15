@@ -33,8 +33,4 @@ class F {
 }
 ```
 Example output:  
-![](http://i.imgur.com/S7AJQE8.png)
-
-Dependencies:  
-[SourceKitten](https://github.com/jpsim/SourceKitten)  
-[Graphviz (dot)](http://www.graphviz.org)
+![](https://i.imgur.com/1sFbts5.png)
