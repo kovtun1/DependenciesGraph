@@ -31,8 +31,7 @@ public class SourceFileClassesParser {
   
   public func extractClassesTypes(
     fromSourceCode sourceCode : String,
-    sourceFile                : File,
-    syntax                    : String
+                   sourceFile : File
   ) -> [ClassTypes] {
     let classStructures: [ClassStructure] =
       self.structureParser.extractClassStructures(file: sourceFile)
@@ -44,7 +43,7 @@ public class SourceFileClassesParser {
       
       let classTypes: Set<String> = self.syntaxParser.extractTypes(
         fromSourceCode : sourceCode,
-        syntax         : syntax,
+        sourceFile     : sourceFile,
         inRange        : classBodyRange
       )
       

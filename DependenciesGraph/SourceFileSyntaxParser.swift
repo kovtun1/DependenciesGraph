@@ -7,35 +7,36 @@
 //
 
 import Cocoa
-import SwiftyJSON
+//import SwiftyJSON
+import SourceKittenFramework
 
 public class SourceFileSyntaxParser {
   public func extractTypes(
     fromSourceCode sourceCode : String,
-    syntax                    : String,
+    sourceFile                : File,
     inRange range             : Range<Int>
   ) -> Set<String> {
-    let syntaxJson = JSON.parse(syntax)
+    let syntaxMap = SyntaxMap(file: sourceFile)
     
-    guard let syntaxItems: [JSON] = syntaxJson.array else {
-      return []
+    let typeIdentifierSyntaxTokens: [SyntaxToken] = syntaxMap.tokens.filter {
+      (syntaxToken: SyntaxToken) -> Bool in
+      return syntaxToken.type == SyntaxKind.typeidentifier.rawValue
     }
     
-    let allTypes: [String] = syntaxItems.flatMap {
-      (syntaxItem: JSON) -> String? in
+    let allTypes: [String] = typeIdentifierSyntaxTokens.flatMap {
+      (syntaxToken: SyntaxToken) -> String? in
       guard
-        syntaxItem["type"].string == "source.lang.swift.syntaxtype.typeidentifier",
-        let offset: Int = syntaxItem["offset"].int,
-        let length: Int = syntaxItem["length"].int,
-        range.contains(offset) && range.contains(offset + length)
+        range.contains(syntaxToken.offset) && range.contains(syntaxToken.offset + syntaxToken.length)
       else {
         return nil
       }
       
       let typeStartIndex: String.Index =
-        sourceCode.index(sourceCode.startIndex, offsetBy: offset)
+        sourceCode.index(sourceCode.startIndex, offsetBy: syntaxToken.offset)
+      
       let typeEndIndex: String.Index =
-        sourceCode.index(sourceCode.startIndex, offsetBy: offset + length)
+        sourceCode.index(sourceCode.startIndex, offsetBy: syntaxToken.offset + syntaxToken.length)
+      
       let typeRange: Range<String.Index> = typeStartIndex ..< typeEndIndex
       let type: String = sourceCode.substring(with: typeRange)
       

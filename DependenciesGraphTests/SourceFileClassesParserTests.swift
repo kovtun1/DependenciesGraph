@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import SourceKittenFramework
 
 @testable import DependenciesGraph
 
@@ -22,13 +23,8 @@ class SourceFileClassesParserTests: XCTestCase {
   func testClassesInFoo3() {
     let fileReader = FileReader()
     let sourceFileContent: String = fileReader.readFile(withName: "Foo3", fileExtension: "txt")
-    
-    let structureFileContent: String =
-      fileReader.readFile(withName: "Foo3_structure", fileExtension: "json")
-    
-    let syntaxFileContent: String =
-      fileReader.readFile(withName: "Foo3_syntax", fileExtension: "json")
-    
+    let filePaths = FilePaths()
+    let sourceFile: File = filePaths.getSourceFileFromBundle(withName: "Foo3", andExtension: "txt")
     let structureParser: SourceFileStructureParser = SourceFileStructureParser()
     let syntaxParser: SourceFileSyntaxParser = SourceFileSyntaxParser()
     
@@ -37,9 +33,9 @@ class SourceFileClassesParserTests: XCTestCase {
     
     let extractedClassesTypes: [ClassTypes] = classesParser.extractClassesTypes(
       fromSourceCode : sourceFileContent,
-      structure      : structureFileContent,
-      syntax         : syntaxFileContent
+      sourceFile     : sourceFile
     )
+    
     let expectedClassesTypes: [ClassTypes] = [
       ClassTypes(
         className  : "UserManager",

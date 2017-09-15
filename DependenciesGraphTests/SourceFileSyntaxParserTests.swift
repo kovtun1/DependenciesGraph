@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import SourceKittenFramework
 
 @testable import DependenciesGraph
 
@@ -74,14 +75,14 @@ class SourceFileSyntaxParserTests: XCTestCase {
     inRange range           : Range<Int>
   ) -> Set<String> {
     let fileReader = FileReader()
+    let filePaths = FilePaths()
     let sourceFileContent: String = fileReader.readFile(withName: fileName, fileExtension: "txt")
-    let syntaxFileContent: String =
-      fileReader.readFile(withName: "\(fileName)_syntax", fileExtension: "json")
+    let sourceFile: File = filePaths.getSourceFileFromBundle(withName: fileName, andExtension: "txt")
     
     let syntaxParser = SourceFileSyntaxParser()
     let extractedTypes: Set<String> = syntaxParser.extractTypes(
       fromSourceCode : sourceFileContent,
-      syntax         : syntaxFileContent,
+      sourceFile     : sourceFile,
       inRange        : range
     )
     

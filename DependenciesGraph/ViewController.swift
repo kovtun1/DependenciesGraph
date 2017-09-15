@@ -49,9 +49,6 @@ class ViewController: NSViewController {
     }
   }
   
-  internal var sourceKittenBinaryPath : String!
-  internal var graphvizDotBinaryPath  : String!
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -131,13 +128,9 @@ class ViewController: NSViewController {
         
         let graphGenerator = GraphGenerator()
         let classTypesGenerator = ClassTypesGenerator()
-        let sourceKittenShellCaller =
-          SourceKittenShellCaller(binaryPath: self.sourceKittenBinaryPath)
         
-        let classTypes: [ClassTypes] = try classTypesGenerator.generateClassTypes(
-          sourceFileUrl           : sourceFileUrl,
-          sourceKittenShellCaller : sourceKittenShellCaller
-        )
+        let classTypes: [ClassTypes] =
+          try classTypesGenerator.generateClassTypes(sourceFileUrl: sourceFileUrl)
         
         let newGraph: Graph =
           graphGenerator.generateGraph(classesTypes: classTypes, existingGraph: self.graph)

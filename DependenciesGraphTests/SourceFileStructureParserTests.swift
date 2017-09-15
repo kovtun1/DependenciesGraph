@@ -21,7 +21,8 @@ class SourceFileStructureParserTests: XCTestCase {
   }
   
   func testFoo3Structure() {
-    let file: File = self.getSourceFileFromBundle(withName: "Foo3", andExtension: "txt")
+    let filePaths = FilePaths()
+    let file: File = filePaths.getSourceFileFromBundle(withName: "Foo3", andExtension: "txt")
     let structureParser = SourceFileStructureParser()
     let extractedClassStructures: [ClassStructure] =
       structureParser.extractClassStructures(file: file)
@@ -36,8 +37,9 @@ class SourceFileStructureParserTests: XCTestCase {
   }
   
   func testAddToDoTableViewControllerSceneStructure() {
+    let filePaths = FilePaths()
     let file: File =
-      self.getSourceFileFromBundle(withName: "AddToDoTableViewControllerScene", andExtension: "txt")
+      filePaths.getSourceFileFromBundle(withName: "AddToDoTableViewControllerScene", andExtension: "txt")
     
     let structureParser = SourceFileStructureParser()
     let extractedClassStructures: [ClassStructure] =
@@ -48,18 +50,5 @@ class SourceFileStructureParserTests: XCTestCase {
     ]
     
     XCTAssertEqual(extractedClassStructures, expectedClassStructures)
-  }
-  
-  // MARK: - private 
-  
-  private func getSourceFileFromBundle(
-    withName     fileName      : String,
-    andExtension fileExtension : String
-  ) -> File {
-    let bundle = Bundle(for: type(of: self))
-    let fileUrl: URL = bundle.url(forResource: fileName, withExtension: fileExtension)!
-    let file = File(path: fileUrl.path)!
-    
-    return file
   }
 }
