@@ -7,20 +7,45 @@
 //
 
 import Cocoa
+import WebKit
+
+private struct VisJsGraphEdge {
+  let edge : Edge
+  let id   : String
+}
+
+extension VisJsGraphEdge: Equatable {
+  static func ==(lhs: VisJsGraphEdge, rhs: VisJsGraphEdge) -> Bool {
+    return lhs.edge == rhs.edge && lhs.id == rhs.id
+  }
+}
+
+extension VisJsGraphEdge: Hashable {
+  var hashValue: Int {
+    return self.edge.hashValue ^ self.id.hashValue
+  }
+}
 
 class ViewController: NSViewController {
   @IBOutlet private weak var instructionsTextField : NSTextField!
-  @IBOutlet private weak var imageView             : NSImageView!
+  @IBOutlet private weak var webView               : WKWebView!
+  
+  private var graph = Graph(nodes: Set<Node>(), edges: Set<Edge>())
+  private var visJsGraphEdges: Set<VisJsGraphEdge> = []
+  
+  private var canUpdate: Bool = true
   
   internal var sourceFileUrl: URL? {
     didSet {
-      if let _ = sourceFileUrl {
-        self.instructionsTextField.isHidden = false
-      } else {
+      if let _ = self.sourceFileUrl {
         self.instructionsTextField.isHidden = true
+        self.webView.isHidden = false
+        
+        self.resizeGraphCanvas()
+      } else {
+        self.instructionsTextField.isHidden = false
+        self.webView.isHidden = true
       }
-      
-      self.update()
     }
   }
   
@@ -30,10 +55,34 @@ class ViewController: NSViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {
-      [unowned self]
-      (timer: Timer) in
-      self.update()
+    self.sourceFileUrl = nil
+    
+    self.webView.postsFrameChangedNotifications = true
+    
+    NotificationCenter.default.addObserver(
+      self,
+      selector : #selector(webViewFrameChanged),
+      name     : NSNotification.Name.NSViewFrameDidChange,
+      object   : nil
+    )
+    
+    do {
+      try self.createRequiredFilesForFutureUse()
+      
+      let graphFilePathsCreator = GraphFilePathsCreator()
+      let graphHtmlUrl = URL(fileURLWithPath: graphFilePathsCreator.graphHtmlPath)
+      let request = URLRequest(url: graphHtmlUrl)
+      
+      self.webView.load(request)
+      self.resizeGraphCanvas()
+      
+      Timer.scheduledTimer(withTimeInterval: 2.5, repeats: true) {
+        [unowned self]
+        (timer: Timer) in
+        self.update()
+      }
+    } catch (let error) {
+      print(error)
     }
   }
   
@@ -43,73 +92,174 @@ class ViewController: NSViewController {
     }
   }
   
+  deinit {
+    NotificationCenter.default.removeObserver(self)
+  }
+  
+  private func createRequiredFilesForFutureUse() throws {
+    let graphFilePathsCreator = GraphFilePathsCreator()
+    let graphFilesCreator = GraphFilesCreator()
+    let graphCodeGenerator = GraphCodeGenerator()
+    
+    let graphHtmlCode: String = graphCodeGenerator.generateGraphHtmlCode(
+      visJsPath            : graphFilePathsCreator.visJsPath,
+      visNetworkMinCssPath : graphFilePathsCreator.visNetworkMinCssPath
+    )
+    
+    let _ = try graphFilesCreator.createFiles(
+      graphFilePathsCreator : graphFilePathsCreator,
+      graphHtmlCode         : graphHtmlCode
+    )
+  }
+  
   // MARK: - Update
   
   private func update() {
-    guard let sourceFileUrl = self.sourceFileUrl else {
-      self.imageView.image = nil
-      
+    guard self.canUpdate else {
       return
     }
     
-    let sourceFilePath: String =
-      sourceFileUrl.absoluteString.replacingOccurrences(of: "file:///", with: "/")
-    
-    let sourceCodeReader = SourceCodeReader()
-    
-    do {
-      let sourceCode: String = try sourceCodeReader.readSourceCode(from: sourceFilePath)
-      let syntax: String = self.createSyntaxForSourceFile(at: sourceFilePath)
-      let structure: String = self.createStructureForSourceFile(at: sourceFilePath)
-      let structureParser = SourceFileStructureParser()
-      let syntaxParser = SourceFileSyntaxParser()
+    DispatchQueue.global(qos: DispatchQoS.background.qosClass).async {
+      self.canUpdate = false
       
-      let classesParser =
-        SourceFileClassesParser(structureParser: structureParser, syntaxParser: syntaxParser)
-      
-      let classTypes: [ClassTypes] =
-        classesParser.extractClassesTypes(
-          fromSourceCode : sourceCode,
-          structure      : structure,
-          syntax         : syntax
-      )
-      
-      let dependenciesGraphCodeGenerator = DependenciesGraphCodeGenerator()
-      
-      let graphCode: String =
-        dependenciesGraphCodeGenerator.generateCode(forClassesTypes: classTypes)
-      
-      let graphImageGenerator =
-        DependenciesGraphImageGenerator(dotBinaryPath: self.graphvizDotBinaryPath)
-      
-      guard let graphImage: NSImage = graphImageGenerator.generateImage(from: graphCode) else {
-        return
+      do {
+        guard let sourceFileUrl: URL = self.sourceFileUrl else {
+          self.canUpdate = true
+          
+          return
+        }
+        
+        let graphGenerator = GraphGenerator()
+        let classTypesGenerator = ClassTypesGenerator()
+        let sourceKittenShellCaller =
+          SourceKittenShellCaller(binaryPath: self.sourceKittenBinaryPath)
+        
+        let classTypes: [ClassTypes] = try classTypesGenerator.generateClassTypes(
+          sourceFileUrl           : sourceFileUrl,
+          sourceKittenShellCaller : sourceKittenShellCaller
+        )
+        
+        let newGraph: Graph =
+          graphGenerator.generateGraph(classesTypes: classTypes, existingGraph: self.graph)
+        
+        guard self.graph != newGraph else {
+          self.canUpdate = true
+          
+          return
+        }
+        
+        DispatchQueue.main.async {
+          do {
+            let graphCodeGenerator = GraphCodeGenerator()
+            let nodeFunctionCalls: [String] = graphCodeGenerator.generateNodeFunctionCalls(
+              currentGraph : self.graph,
+              newGraph     : newGraph
+            )
+            
+            try self.updateVisJsGraph(nodeFunctionCalls: nodeFunctionCalls, newGraph: newGraph)
+            
+            self.graph = newGraph
+            self.canUpdate = true
+          } catch (let error) {
+            print(error)
+            
+            self.canUpdate = true
+          }
+        }
+      } catch (let error) {
+        print(error)
+        
+        self.canUpdate = true
       }
-      
-      self.imageView.image = graphImage
-    } catch (let error) {
-      print(error)
     }
   }
   
-  // MARK: - shell
-  
-  private func createSyntaxForSourceFile(at sourceFilePath: String) -> String {
-    return self.executeSourceKitten(withCommand: "syntax", sourceFilePath: sourceFilePath)
-  }
-  
-  private func createStructureForSourceFile(at sourceFilePath: String) -> String {
-    return self.executeSourceKitten(withCommand: "structure", sourceFilePath: sourceFilePath)
-  }
-  
-  private func executeSourceKitten(withCommand command: String, sourceFilePath: String) -> String {
-    let shell = ShellCommandsExecutor()
-    let data = shell.execute(
-      launchPath : self.sourceKittenBinaryPath,
-      arguments  : [command, "--file", sourceFilePath]
-    )
-    let string = String(data: data, encoding: String.Encoding.utf8)!
+  private func updateVisJsGraph(nodeFunctionCalls: [String], newGraph: Graph) throws {
+    let graphCodeGenerator = GraphCodeGenerator()
+    let graphsDifferenceCalculator = GraphsDifferenceCalculator()
     
-    return string
+    for nodeFunctionCall in nodeFunctionCalls {
+      self.webView.evaluateJavaScript(nodeFunctionCall, completionHandler: nil)
+    }
+    
+    let addedEdges: Set<Edge> = graphsDifferenceCalculator.getAddedEdges(self.graph, newGraph)
+    
+    for addedEdge in addedEdges {
+      let addEdgeFnCall: String = graphCodeGenerator.generateAddEdgeFunctionCallCode(
+        from : addedEdge.fromNodeId,
+        to   : addedEdge.toNodeId
+      )
+      
+      self.webView.evaluate(script: addEdgeFnCall, completion: {
+        (result: Any?, error: Error?) in
+        if let id: String = (result as? [String])?.first {
+          let visJsGraphEdge = VisJsGraphEdge(edge: addedEdge, id: id)
+          
+          self.visJsGraphEdges.insert(visJsGraphEdge)
+        }
+      })
+    }
+    
+    let removedEdges: Set<Edge> = graphsDifferenceCalculator.getRemovedEdges(self.graph, newGraph)
+    
+    for removedEdge in removedEdges {
+      let visJsGraphEdge: VisJsGraphEdge? = self.visJsGraphEdges.first(where: {
+        (visJsGraphEdge: VisJsGraphEdge) -> Bool in
+        return visJsGraphEdge.edge == removedEdge
+      })
+      
+      guard let graphEdge = visJsGraphEdge else {
+        return
+      }
+      
+      let removeEdgeFnCall: String =
+        graphCodeGenerator.generateRemoveEdgeFunctionCallCode(edgeId: graphEdge.id)
+      
+      self.visJsGraphEdges.remove(graphEdge)
+      
+      self.webView.evaluateJavaScript(removeEdgeFnCall, completionHandler: nil)
+    }
+  }
+  
+  // MARK: - Notifications
+  
+  @objc private func webViewFrameChanged(notification: Notification) {
+    guard let object = notification.object, (object as? WKWebView) == self.webView else {
+      return
+    }
+    
+    self.resizeGraphCanvas()
+  }
+  
+  // MARK: - Graph canvas
+  
+  private func resizeGraphCanvas() {
+    let graphCodeGenerator = GraphCodeGenerator()
+    let insetSize: CGFloat = 20.0
+    let canvasSize = CGSize(
+      width  : self.webView.frame.size.width - insetSize,
+      height : self.webView.frame.size.height - insetSize
+    )
+    
+    let resizeCode = graphCodeGenerator.generateCanvasResizeCode(size: canvasSize)
+    
+    self.webView.evaluateJavaScript(resizeCode, completionHandler: nil)
+  }
+}
+
+extension WKWebView {
+  func evaluate(script: String, completion: @escaping (_ result: Any?, _ error: Error?) -> Void) {
+    var finished = false
+    
+    self.evaluateJavaScript(script) {
+      (result: Any?, error: Error?) in
+      completion(result, error)
+      
+      finished = true
+    }
+    
+    while !finished {
+      RunLoop.current.run(mode: .defaultRunLoopMode, before: Date.distantFuture)
+    }
   }
 }

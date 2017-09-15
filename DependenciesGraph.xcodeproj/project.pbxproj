@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		19129A65893A8F1E2B21B563 /* Pods_DependenciesGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B73EDA43FC7126E92E384CE /* Pods_DependenciesGraph.framework */; };
+		B5404E211F697C7D006DE5A3 /* vis-network.min.css in Resources */ = {isa = PBXBuildFile; fileRef = B5404E201F697C7D006DE5A3 /* vis-network.min.css */; };
+		B5404E231F697CAC006DE5A3 /* vis.min.js in Resources */ = {isa = PBXBuildFile; fileRef = B5404E221F697CAC006DE5A3 /* vis.min.js */; };
 		B59464151F59B4D600335E8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59464141F59B4D600335E8B /* AppDelegate.swift */; };
 		B59464171F59B4D600335E8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59464161F59B4D600335E8B /* ViewController.swift */; };
 		B59464191F59B4D600335E8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B59464181F59B4D600335E8B /* Assets.xcassets */; };
@@ -27,13 +29,18 @@
 		B594644B1F59B52A00335E8B /* SourceFileSyntaxParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59464421F59B52A00335E8B /* SourceFileSyntaxParserTests.swift */; };
 		B594644D1F5D37E800335E8B /* SourceFileClassesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594644C1F5D37E800335E8B /* SourceFileClassesParser.swift */; };
 		B594644F1F5D471000335E8B /* SourceFileClassesParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594644E1F5D471000335E8B /* SourceFileClassesParserTests.swift */; };
-		B594655D1F61B31200335E8B /* DependenciesGraphCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594655C1F61B31200335E8B /* DependenciesGraphCodeGenerator.swift */; };
-		B594655F1F61B31F00335E8B /* DependenciesGraphCodeGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594655E1F61B31F00335E8B /* DependenciesGraphCodeGeneratorTests.swift */; };
-		B59465611F627C4400335E8B /* DependenciesGraphImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59465601F627C4400335E8B /* DependenciesGraphImageGenerator.swift */; };
 		B59465631F628CAC00335E8B /* AddToDoTableViewControllerScene.txt in Resources */ = {isa = PBXBuildFile; fileRef = B59465621F628CAC00335E8B /* AddToDoTableViewControllerScene.txt */; };
 		B59465661F628D4800335E8B /* AddToDoTableViewControllerScene_structure.json in Resources */ = {isa = PBXBuildFile; fileRef = B59465641F628D4800335E8B /* AddToDoTableViewControllerScene_structure.json */; };
 		B59465671F628D4800335E8B /* AddToDoTableViewControllerScene_syntax.json in Resources */ = {isa = PBXBuildFile; fileRef = B59465651F628D4800335E8B /* AddToDoTableViewControllerScene_syntax.json */; };
 		B59465691F62A23A00335E8B /* SourceCodeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59465681F62A23A00335E8B /* SourceCodeReader.swift */; };
+		B5B82DFF1F6A747A0002A3A3 /* GraphFilesCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B82DFE1F6A747A0002A3A3 /* GraphFilesCreator.swift */; };
+		B5B82E011F6A96E50002A3A3 /* GraphFilePathsCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B82E001F6A96E50002A3A3 /* GraphFilePathsCreator.swift */; };
+		B5B82E031F6AB17F0002A3A3 /* GraphsDifferenceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B82E021F6AB17F0002A3A3 /* GraphsDifferenceCalculator.swift */; };
+		B5B82E051F6AB2760002A3A3 /* GraphsDifferenceCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B82E041F6AB2760002A3A3 /* GraphsDifferenceCalculatorTests.swift */; };
+		B5B82E071F6C05970002A3A3 /* ClassTypesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B82E061F6C05970002A3A3 /* ClassTypesGenerator.swift */; };
+		B5B82E091F6C05CE0002A3A3 /* SourceKittenShellCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B82E081F6C05CE0002A3A3 /* SourceKittenShellCaller.swift */; };
+		B5DB5BD71F698AA400B30CAA /* GraphGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB5BD61F698AA400B30CAA /* GraphGenerator.swift */; };
+		B5DB5BD91F698D7600B30CAA /* GraphCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB5BD81F698D7600B30CAA /* GraphCodeGenerator.swift */; };
 		B77F52B5508B1217BDB8DA5A /* Pods_DependenciesGraphTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACA7E1885B2001227B1C208 /* Pods_DependenciesGraphTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +57,8 @@
 /* Begin PBXFileReference section */
 		5B73EDA43FC7126E92E384CE /* Pods_DependenciesGraph.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DependenciesGraph.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ED7888455ACC3049BDE346E /* Pods-DependenciesGraphTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DependenciesGraphTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DependenciesGraphTests/Pods-DependenciesGraphTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B5404E201F697C7D006DE5A3 /* vis-network.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "vis-network.min.css"; sourceTree = "<group>"; };
+		B5404E221F697CAC006DE5A3 /* vis.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = vis.min.js; sourceTree = "<group>"; };
 		B59464111F59B4D600335E8B /* DependenciesGraph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DependenciesGraph.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B59464141F59B4D600335E8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B59464161F59B4D600335E8B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,13 +82,18 @@
 		B59464421F59B52A00335E8B /* SourceFileSyntaxParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceFileSyntaxParserTests.swift; sourceTree = "<group>"; };
 		B594644C1F5D37E800335E8B /* SourceFileClassesParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceFileClassesParser.swift; sourceTree = "<group>"; };
 		B594644E1F5D471000335E8B /* SourceFileClassesParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceFileClassesParserTests.swift; sourceTree = "<group>"; };
-		B594655C1F61B31200335E8B /* DependenciesGraphCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependenciesGraphCodeGenerator.swift; sourceTree = "<group>"; };
-		B594655E1F61B31F00335E8B /* DependenciesGraphCodeGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependenciesGraphCodeGeneratorTests.swift; sourceTree = "<group>"; };
-		B59465601F627C4400335E8B /* DependenciesGraphImageGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependenciesGraphImageGenerator.swift; sourceTree = "<group>"; };
 		B59465621F628CAC00335E8B /* AddToDoTableViewControllerScene.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AddToDoTableViewControllerScene.txt; sourceTree = "<group>"; };
 		B59465641F628D4800335E8B /* AddToDoTableViewControllerScene_structure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AddToDoTableViewControllerScene_structure.json; sourceTree = "<group>"; };
 		B59465651F628D4800335E8B /* AddToDoTableViewControllerScene_syntax.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AddToDoTableViewControllerScene_syntax.json; sourceTree = "<group>"; };
 		B59465681F62A23A00335E8B /* SourceCodeReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceCodeReader.swift; sourceTree = "<group>"; };
+		B5B82DFE1F6A747A0002A3A3 /* GraphFilesCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphFilesCreator.swift; sourceTree = "<group>"; };
+		B5B82E001F6A96E50002A3A3 /* GraphFilePathsCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphFilePathsCreator.swift; sourceTree = "<group>"; };
+		B5B82E021F6AB17F0002A3A3 /* GraphsDifferenceCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsDifferenceCalculator.swift; sourceTree = "<group>"; };
+		B5B82E041F6AB2760002A3A3 /* GraphsDifferenceCalculatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphsDifferenceCalculatorTests.swift; sourceTree = "<group>"; };
+		B5B82E061F6C05970002A3A3 /* ClassTypesGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTypesGenerator.swift; sourceTree = "<group>"; };
+		B5B82E081F6C05CE0002A3A3 /* SourceKittenShellCaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceKittenShellCaller.swift; sourceTree = "<group>"; };
+		B5DB5BD61F698AA400B30CAA /* GraphGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphGenerator.swift; sourceTree = "<group>"; };
+		B5DB5BD81F698D7600B30CAA /* GraphCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphCodeGenerator.swift; sourceTree = "<group>"; };
 		B89623192F0331904C152063 /* Pods-DependenciesGraph.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DependenciesGraph.release.xcconfig"; path = "Pods/Target Support Files/Pods-DependenciesGraph/Pods-DependenciesGraph.release.xcconfig"; sourceTree = "<group>"; };
 		EBCAA8753E6922D0D9C0DE48 /* Pods-DependenciesGraphTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DependenciesGraphTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DependenciesGraphTests/Pods-DependenciesGraphTests.release.xcconfig"; sourceTree = "<group>"; };
 		F01B450C7450E33DE060693E /* Pods-DependenciesGraph.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DependenciesGraph.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DependenciesGraph/Pods-DependenciesGraph.debug.xcconfig"; sourceTree = "<group>"; };
@@ -115,6 +129,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B5404E1F1F697C4D006DE5A3 /* vis-graph */ = {
+			isa = PBXGroup;
+			children = (
+				B5404E201F697C7D006DE5A3 /* vis-network.min.css */,
+				B5404E221F697CAC006DE5A3 /* vis.min.js */,
+			);
+			path = "vis-graph";
+			sourceTree = "<group>";
+		};
 		B59464081F59B4D600335E8B = {
 			isa = PBXGroup;
 			children = (
@@ -144,12 +167,18 @@
 				B59464331F59B50C00335E8B /* SourceFileStructureParser.swift */,
 				B59464341F59B50C00335E8B /* SourceFileSyntaxParser.swift */,
 				B594644C1F5D37E800335E8B /* SourceFileClassesParser.swift */,
-				B594655C1F61B31200335E8B /* DependenciesGraphCodeGenerator.swift */,
-				B59465601F627C4400335E8B /* DependenciesGraphImageGenerator.swift */,
 				B59465681F62A23A00335E8B /* SourceCodeReader.swift */,
+				B5DB5BD61F698AA400B30CAA /* GraphGenerator.swift */,
+				B5DB5BD81F698D7600B30CAA /* GraphCodeGenerator.swift */,
+				B5B82E001F6A96E50002A3A3 /* GraphFilePathsCreator.swift */,
+				B5B82DFE1F6A747A0002A3A3 /* GraphFilesCreator.swift */,
+				B5B82E021F6AB17F0002A3A3 /* GraphsDifferenceCalculator.swift */,
+				B5B82E061F6C05970002A3A3 /* ClassTypesGenerator.swift */,
+				B5B82E081F6C05CE0002A3A3 /* SourceKittenShellCaller.swift */,
 				B59464181F59B4D600335E8B /* Assets.xcassets */,
 				B594641A1F59B4D600335E8B /* Main.storyboard */,
 				B594641D1F59B4D600335E8B /* Info.plist */,
+				B5404E1F1F697C4D006DE5A3 /* vis-graph */,
 			);
 			path = DependenciesGraph;
 			sourceTree = "<group>";
@@ -161,7 +190,7 @@
 				B59464411F59B52A00335E8B /* SourceFileStructureParserTests.swift */,
 				B59464421F59B52A00335E8B /* SourceFileSyntaxParserTests.swift */,
 				B594644E1F5D471000335E8B /* SourceFileClassesParserTests.swift */,
-				B594655E1F61B31F00335E8B /* DependenciesGraphCodeGeneratorTests.swift */,
+				B5B82E041F6AB2760002A3A3 /* GraphsDifferenceCalculatorTests.swift */,
 				B59464371F59B51F00335E8B /* FileReader.swift */,
 				B59464391F59B52A00335E8B /* Source Files */,
 			);
@@ -285,8 +314,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5404E211F697C7D006DE5A3 /* vis-network.min.css in Resources */,
 				B59464191F59B4D600335E8B /* Assets.xcassets in Resources */,
 				B594641C1F59B4D600335E8B /* Main.storyboard in Resources */,
+				B5404E231F697CAC006DE5A3 /* vis.min.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,12 +438,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5DB5BD71F698AA400B30CAA /* GraphGenerator.swift in Sources */,
+				B5B82E071F6C05970002A3A3 /* ClassTypesGenerator.swift in Sources */,
 				B59464171F59B4D600335E8B /* ViewController.swift in Sources */,
 				B59464361F59B50C00335E8B /* SourceFileSyntaxParser.swift in Sources */,
-				B594655D1F61B31200335E8B /* DependenciesGraphCodeGenerator.swift in Sources */,
-				B59465611F627C4400335E8B /* DependenciesGraphImageGenerator.swift in Sources */,
+				B5B82E011F6A96E50002A3A3 /* GraphFilePathsCreator.swift in Sources */,
 				B59464351F59B50C00335E8B /* SourceFileStructureParser.swift in Sources */,
+				B5DB5BD91F698D7600B30CAA /* GraphCodeGenerator.swift in Sources */,
+				B5B82E091F6C05CE0002A3A3 /* SourceKittenShellCaller.swift in Sources */,
+				B5B82E031F6AB17F0002A3A3 /* GraphsDifferenceCalculator.swift in Sources */,
 				B59465691F62A23A00335E8B /* SourceCodeReader.swift in Sources */,
+				B5B82DFF1F6A747A0002A3A3 /* GraphFilesCreator.swift in Sources */,
 				B59464151F59B4D600335E8B /* AppDelegate.swift in Sources */,
 				B594644D1F5D37E800335E8B /* SourceFileClassesParser.swift in Sources */,
 				B59464321F59B50300335E8B /* ShellCommandsExecutor.swift in Sources */,
@@ -424,7 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B594644F1F5D471000335E8B /* SourceFileClassesParserTests.swift in Sources */,
-				B594655F1F61B31F00335E8B /* DependenciesGraphCodeGeneratorTests.swift in Sources */,
+				B5B82E051F6AB2760002A3A3 /* GraphsDifferenceCalculatorTests.swift in Sources */,
 				B59464381F59B51F00335E8B /* FileReader.swift in Sources */,
 				B594644A1F59B52A00335E8B /* SourceFileStructureParserTests.swift in Sources */,
 				B594644B1F59B52A00335E8B /* SourceFileSyntaxParserTests.swift in Sources */,

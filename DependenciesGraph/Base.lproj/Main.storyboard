@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="12121"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -133,6 +134,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Upi-TG-G0W">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wog-Pe-Wmh">
                                 <rect key="frame" x="82" y="127" width="315" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Please open a .swift file using File -&gt; Open... menu." id="qLj-Vw-yN1">
@@ -141,27 +149,19 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MVG-OY-wSN">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="768" id="1ul-VM-rE5"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="1024" id="VIy-co-fzZ"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="LUU-1K-f1z"/>
-                            </imageView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Upi-TG-G0W" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="14L-Zq-wBs"/>
                             <constraint firstItem="Wog-Pe-Wmh" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="4sg-NI-7L9"/>
+                            <constraint firstItem="Upi-TG-G0W" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Gdl-RL-Ifo"/>
                             <constraint firstItem="Wog-Pe-Wmh" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="OiP-XF-VYg"/>
-                            <constraint firstItem="MVG-OY-wSN" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="Tlx-Qr-g5F"/>
-                            <constraint firstItem="MVG-OY-wSN" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="US3-mP-gHB"/>
-                            <constraint firstAttribute="bottom" secondItem="MVG-OY-wSN" secondAttribute="bottom" id="v9m-uH-gsx"/>
-                            <constraint firstAttribute="trailing" secondItem="MVG-OY-wSN" secondAttribute="trailing" id="vwD-80-lQg"/>
+                            <constraint firstAttribute="bottom" secondItem="Upi-TG-G0W" secondAttribute="bottom" id="moE-ZZ-CVk"/>
+                            <constraint firstAttribute="trailing" secondItem="Upi-TG-G0W" secondAttribute="trailing" id="sce-qW-dWo"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="MVG-OY-wSN" id="dcJ-1C-efl"/>
                         <outlet property="instructionsTextField" destination="Wog-Pe-Wmh" id="cmk-Re-wsM"/>
+                        <outlet property="webView" destination="Upi-TG-G0W" id="PdB-Zq-RF1"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
