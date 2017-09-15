@@ -6,6 +6,7 @@ target 'DependenciesGraph' do
   use_frameworks!
 
   pod 'SwiftyJSON', '~> 3.1.4'
+  pod 'SourceKittenFramework'
 
   target 'DependenciesGraphTests' do
     inherit! :search_paths

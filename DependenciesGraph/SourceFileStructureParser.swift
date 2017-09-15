@@ -8,6 +8,7 @@
 
 import Cocoa
 import SwiftyJSON
+import SourceKittenFramework
 
 public struct ClassStructure {
   let name       : String
@@ -23,20 +24,23 @@ extension ClassStructure: Equatable {
 }
 
 public class SourceFileStructureParser {
-  public func extractClassStructures(sourceFileStructure: String) -> [ClassStructure] {
-    let structure = JSON(parseJSON: sourceFileStructure)
+  public func extractClassStructures(file: File) -> [ClassStructure] {
+    let structure = Structure(file: file)
+    let structureJson: JSON = JSON.init(structure.dictionary)
     
-    guard let structureItems: [JSON] = structure["key.substructure"].array else {
+    guard
+      let substructureItems: [JSON] = structureJson[SwiftDocKey.substructure.rawValue].array
+    else {
       return []
     }
     
-    let classes: [ClassStructure] = structureItems.flatMap {
-      (structureItem: JSON) -> ClassStructure? in
+    let classes: [ClassStructure] = substructureItems.flatMap {
+      (substructureItem: JSON) -> ClassStructure? in
       guard
-        structureItem["key.kind"] == "source.lang.swift.decl.class",
-        let name: String = structureItem["key.name"].string,
-        let bodyOffset: Int = structureItem["key.bodyoffset"].int,
-        let bodyLength: Int = structureItem["key.bodylength"].int
+        substructureItem[SwiftDocKey.kind.rawValue].string == SwiftDeclarationKind.class.rawValue,
+        let name: String = substructureItem[SwiftDocKey.name.rawValue].string,
+        let bodyOffset: Int = substructureItem[SwiftDocKey.bodyOffset.rawValue].int,
+        let bodyLength: Int = substructureItem[SwiftDocKey.bodyLength.rawValue].int
       else {
         return nil
       }

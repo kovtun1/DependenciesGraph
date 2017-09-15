@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import SourceKittenFramework
 
 @testable import DependenciesGraph
 
@@ -20,13 +21,10 @@ class SourceFileStructureParserTests: XCTestCase {
   }
   
   func testFoo3Structure() {
-    let fileReader = FileReader()
-    let structureFileContent: String =
-      fileReader.readFile(withName: "Foo3_structure", fileExtension: "json")
-    
+    let file: File = self.getSourceFileFromBundle(withName: "Foo3", andExtension: "txt")
     let structureParser = SourceFileStructureParser()
     let extractedClassStructures: [ClassStructure] =
-      structureParser.extractClassStructures(sourceFileStructure: structureFileContent)
+      structureParser.extractClassStructures(file: file)
     
     let expectedClassStructures: [ClassStructure] = [
       ClassStructure(name: "UserManager", bodyOffset: 575, bodyLength: 734),
@@ -38,20 +36,30 @@ class SourceFileStructureParserTests: XCTestCase {
   }
   
   func testAddToDoTableViewControllerSceneStructure() {
-    let fileReader = FileReader()
-    let structureFileContent: String = fileReader.readFile(
-      withName      : "AddToDoTableViewControllerScene_structure",
-      fileExtension : "json"
-    )
+    let file: File =
+      self.getSourceFileFromBundle(withName: "AddToDoTableViewControllerScene", andExtension: "txt")
     
     let structureParser = SourceFileStructureParser()
     let extractedClassStructures: [ClassStructure] =
-      structureParser.extractClassStructures(sourceFileStructure: structureFileContent)
+      structureParser.extractClassStructures(file: file)
     
     let expectedClassStructures: [ClassStructure] = [
       ClassStructure(name: "AddToDoTableViewControllerScene", bodyOffset: 260, bodyLength: 1729)
     ]
     
     XCTAssertEqual(extractedClassStructures, expectedClassStructures)
+  }
+  
+  // MARK: - private 
+  
+  private func getSourceFileFromBundle(
+    withName     fileName      : String,
+    andExtension fileExtension : String
+  ) -> File {
+    let bundle = Bundle(for: type(of: self))
+    let fileUrl: URL = bundle.url(forResource: fileName, withExtension: fileExtension)!
+    let file = File(path: fileUrl.path)!
+    
+    return file
   }
 }

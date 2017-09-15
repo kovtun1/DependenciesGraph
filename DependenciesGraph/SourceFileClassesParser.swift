@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SourceKittenFramework
 
 public struct ClassTypes {
   let className  : String
@@ -30,11 +31,11 @@ public class SourceFileClassesParser {
   
   public func extractClassesTypes(
     fromSourceCode sourceCode : String,
-    structure                 : String,
+    sourceFile                : File,
     syntax                    : String
   ) -> [ClassTypes] {
     let classStructures: [ClassStructure] =
-      self.structureParser.extractClassStructures(sourceFileStructure: structure)
+      self.structureParser.extractClassStructures(file: sourceFile)
     
     let classesTypes: [ClassTypes] = classStructures.map {
       (classStructure: ClassStructure) -> ClassTypes in

@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SourceKittenFramework
 
 internal class ClassTypesGenerator {
   internal func generateClassTypes(
@@ -19,7 +20,11 @@ internal class ClassTypesGenerator {
     let sourceCodeReader = SourceCodeReader()
     let sourceCode: String = try sourceCodeReader.readSourceCode(from: sourceFilePath)
     let syntax: String = sourceKittenShellCaller.createSyntaxForSourceFile(at: sourceFilePath)
-    let structure: String = sourceKittenShellCaller.createStructureForSourceFile(at: sourceFilePath)
+    
+    guard let sourceFile = File(path: sourceFilePath) else {
+      return []
+    }
+    
     let structureParser = SourceFileStructureParser()
     let syntaxParser = SourceFileSyntaxParser()
     
@@ -28,7 +33,7 @@ internal class ClassTypesGenerator {
     
     let classTypes: [ClassTypes] = classesParser.extractClassesTypes(
       fromSourceCode : sourceCode,
-      structure      : structure,
+      sourceFile     : sourceFile,
       syntax         : syntax
     )
     

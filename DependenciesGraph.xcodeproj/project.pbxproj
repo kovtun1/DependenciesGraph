@@ -23,14 +23,12 @@
 		B59464451F59B52A00335E8B /* Foo2.txt in Resources */ = {isa = PBXBuildFile; fileRef = B594643C1F59B52A00335E8B /* Foo2.txt */; };
 		B59464461F59B52A00335E8B /* Foo2_syntax.json in Resources */ = {isa = PBXBuildFile; fileRef = B594643D1F59B52A00335E8B /* Foo2_syntax.json */; };
 		B59464471F59B52A00335E8B /* Foo3.txt in Resources */ = {isa = PBXBuildFile; fileRef = B594643E1F59B52A00335E8B /* Foo3.txt */; };
-		B59464481F59B52A00335E8B /* Foo3_structure.json in Resources */ = {isa = PBXBuildFile; fileRef = B594643F1F59B52A00335E8B /* Foo3_structure.json */; };
 		B59464491F59B52A00335E8B /* Foo3_syntax.json in Resources */ = {isa = PBXBuildFile; fileRef = B59464401F59B52A00335E8B /* Foo3_syntax.json */; };
 		B594644A1F59B52A00335E8B /* SourceFileStructureParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59464411F59B52A00335E8B /* SourceFileStructureParserTests.swift */; };
 		B594644B1F59B52A00335E8B /* SourceFileSyntaxParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59464421F59B52A00335E8B /* SourceFileSyntaxParserTests.swift */; };
 		B594644D1F5D37E800335E8B /* SourceFileClassesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594644C1F5D37E800335E8B /* SourceFileClassesParser.swift */; };
 		B594644F1F5D471000335E8B /* SourceFileClassesParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594644E1F5D471000335E8B /* SourceFileClassesParserTests.swift */; };
 		B59465631F628CAC00335E8B /* AddToDoTableViewControllerScene.txt in Resources */ = {isa = PBXBuildFile; fileRef = B59465621F628CAC00335E8B /* AddToDoTableViewControllerScene.txt */; };
-		B59465661F628D4800335E8B /* AddToDoTableViewControllerScene_structure.json in Resources */ = {isa = PBXBuildFile; fileRef = B59465641F628D4800335E8B /* AddToDoTableViewControllerScene_structure.json */; };
 		B59465671F628D4800335E8B /* AddToDoTableViewControllerScene_syntax.json in Resources */ = {isa = PBXBuildFile; fileRef = B59465651F628D4800335E8B /* AddToDoTableViewControllerScene_syntax.json */; };
 		B59465691F62A23A00335E8B /* SourceCodeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59465681F62A23A00335E8B /* SourceCodeReader.swift */; };
 		B5B82DFF1F6A747A0002A3A3 /* GraphFilesCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B82DFE1F6A747A0002A3A3 /* GraphFilesCreator.swift */; };
@@ -76,14 +74,12 @@
 		B594643C1F59B52A00335E8B /* Foo2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Foo2.txt; sourceTree = "<group>"; };
 		B594643D1F59B52A00335E8B /* Foo2_syntax.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Foo2_syntax.json; sourceTree = "<group>"; };
 		B594643E1F59B52A00335E8B /* Foo3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Foo3.txt; sourceTree = "<group>"; };
-		B594643F1F59B52A00335E8B /* Foo3_structure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Foo3_structure.json; sourceTree = "<group>"; };
 		B59464401F59B52A00335E8B /* Foo3_syntax.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Foo3_syntax.json; sourceTree = "<group>"; };
 		B59464411F59B52A00335E8B /* SourceFileStructureParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceFileStructureParserTests.swift; sourceTree = "<group>"; };
 		B59464421F59B52A00335E8B /* SourceFileSyntaxParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceFileSyntaxParserTests.swift; sourceTree = "<group>"; };
 		B594644C1F5D37E800335E8B /* SourceFileClassesParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceFileClassesParser.swift; sourceTree = "<group>"; };
 		B594644E1F5D471000335E8B /* SourceFileClassesParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceFileClassesParserTests.swift; sourceTree = "<group>"; };
 		B59465621F628CAC00335E8B /* AddToDoTableViewControllerScene.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AddToDoTableViewControllerScene.txt; sourceTree = "<group>"; };
-		B59465641F628D4800335E8B /* AddToDoTableViewControllerScene_structure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AddToDoTableViewControllerScene_structure.json; sourceTree = "<group>"; };
 		B59465651F628D4800335E8B /* AddToDoTableViewControllerScene_syntax.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AddToDoTableViewControllerScene_syntax.json; sourceTree = "<group>"; };
 		B59465681F62A23A00335E8B /* SourceCodeReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceCodeReader.swift; sourceTree = "<group>"; };
 		B5B82DFE1F6A747A0002A3A3 /* GraphFilesCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphFilesCreator.swift; sourceTree = "<group>"; };
@@ -205,10 +201,8 @@
 				B594643C1F59B52A00335E8B /* Foo2.txt */,
 				B594643D1F59B52A00335E8B /* Foo2_syntax.json */,
 				B594643E1F59B52A00335E8B /* Foo3.txt */,
-				B594643F1F59B52A00335E8B /* Foo3_structure.json */,
 				B59464401F59B52A00335E8B /* Foo3_syntax.json */,
 				B59465621F628CAC00335E8B /* AddToDoTableViewControllerScene.txt */,
-				B59465641F628D4800335E8B /* AddToDoTableViewControllerScene_structure.json */,
 				B59465651F628D4800335E8B /* AddToDoTableViewControllerScene_syntax.json */,
 			);
 			path = "Source Files";
@@ -327,13 +321,11 @@
 			files = (
 				B59464471F59B52A00335E8B /* Foo3.txt in Resources */,
 				B59464461F59B52A00335E8B /* Foo2_syntax.json in Resources */,
-				B59464481F59B52A00335E8B /* Foo3_structure.json in Resources */,
 				B59464431F59B52A00335E8B /* Foo1.txt in Resources */,
 				B59464441F59B52A00335E8B /* Foo1_syntax.json in Resources */,
 				B59464491F59B52A00335E8B /* Foo3_syntax.json in Resources */,
 				B59464451F59B52A00335E8B /* Foo2.txt in Resources */,
 				B59465631F628CAC00335E8B /* AddToDoTableViewControllerScene.txt in Resources */,
-				B59465661F628D4800335E8B /* AddToDoTableViewControllerScene_structure.json in Resources */,
 				B59465671F628D4800335E8B /* AddToDoTableViewControllerScene_syntax.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
