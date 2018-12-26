@@ -1,36 +1,23 @@
 # DependenciesGraph
-Generates dependency graph for a .swift file.  
-Example input:
-```
-class A {
-  let b: B
-  let c: C
-}
+Generates dependency graph for a folder containing .swift files.
 
-class B {
-  let c: C
-  let d: D
-}
+# Libraries used
+[Menhir](http://gallium.inria.fr/~fpottier/menhir/)  
+[vis.js](http://visjs.org)  
 
-class C {
-  
-}
+# How to use
+Download the [release](https://github.com/kovtun1/DependenciesGraph/releases)  
+`cd <PATH_TO_Dependencies Graph v1>`  
+`./main.native <PATH_TO_SWIFT_FILES_FOLDER>`  
+Open index.html  
+Select graph (Inheritance or Usage)  
 
-class D {
-  unowned let d: D
-}
+# How to compile
+`ocamlbuild -package unix -package str -use-menhir -menhir "menhir --external-tokens Lexer" main.native`
 
-class E {
-  func craeteB() -> B {
-    return B()
-  }
-}
+# Examples
+[Alamofire](https://github.com/Alamofire/Alamofire)
+![](https://i.imgur.com/a87SPe8.png)
 
-class F {
-  func createA() -> A {
-    return A()
-  }
-}
-```
-Example output:  
-![](https://i.imgur.com/1sFbts5.png)
+[Nuke](https://github.com/kean/Nuke)
+![](https://i.imgur.com/9QEf26G.png)
