@@ -12,6 +12,8 @@ Download the [release](https://github.com/kovtun1/DependenciesGraph/releases)
 Open index.html  
 Select graph (Inheritance or Usage)  
 
+You can specify types that shouldn't be added to the graph in `types_to_ignore.txt`. One type per line.
+
 # How to compile
 `ocamlbuild -package unix -package str -use-menhir -menhir "menhir --external-tokens Lexer" main.native`
 
