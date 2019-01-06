@@ -40,6 +40,18 @@ and insert element_to_insert list =
     else
       element :: insert element_to_insert tl
 
+let read_file file_path =
+  let rec read_file_aux channel lines =
+    try
+      let line = input_line channel in
+      read_file_aux channel (line :: lines)
+    with
+    | End_of_file ->
+      close_in channel;
+      List.rev lines in
+  let channel = open_in file_path in
+  read_file_aux channel []
+
 let rec find_type_declaration tokens =
   match tokens with
   | Protocol :: Type name :: tl
@@ -264,20 +276,8 @@ let print_edges output_channel
                 swift_types_in_files
                 graph_name
                 get_related_types =
-  let nodes_to_ignore = find_nodes [ "Void"
-                                   ; "String"
-                                   ; "Bool"
-                                   ; "Int"; "Int32"; "Int64"; "UInt"
-                                   ; "Float"; "Double"; "TimeInterval"
-                                   ; "CGFloat" ; "CGSize"; "CGPoint"
-                                   ; "Date"; "Data"
-                                   ; "Any"; "AnyObject"
-                                   ; "NSCoder"
-                                   ; "Error"
-                                   ; "DispatchQueue"
-                                   ; "Array"
-                                   ; "Foundation"; "UIKit"
-                                   ] nodes in
+  let node_names = read_file "types_to_ignore.txt" in
+  let nodes_to_ignore = find_nodes node_names nodes in
   let edges =
     List.map
       (
