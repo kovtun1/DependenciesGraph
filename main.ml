@@ -104,17 +104,28 @@ let find_types_in_type_body tokens =
   in
   find_types_in_type_body_aux tokens 0 []
 
-let find_dependencies tokens =
+let find_dependencies tokens swift_types_to_ignore =
   let rec find_dependencies_aux tokens swift_types =
     match find_type_declaration tokens with
     | Some (type_name, tokens_tl) ->
-      let (inherited_types, tokens_tl) = find_inherited_types tokens_tl in
-      let (types_in_type_body, tokens_tl) = find_types_in_type_body tokens_tl in
-      let swift_type = { name=type_name
-                       ; inherited_types=inherited_types
-                       ; types_in_body=types_in_type_body
-                       } in
-      find_dependencies_aux tokens_tl (swift_type :: swift_types)
+      if List.mem type_name swift_types_to_ignore then
+        find_dependencies_aux tokens_tl swift_types
+      else        
+        let (inherited_types, tokens_tl) = find_inherited_types tokens_tl in
+        let (types_in_type_body, tokens_tl) = find_types_in_type_body tokens_tl in
+        let inherited_types =
+          List.filter
+            (fun swift_type -> not (List.mem swift_type swift_types_to_ignore))
+            inherited_types in
+        let types_in_type_body =
+          List.filter
+            (fun swift_type -> not (List.mem swift_type swift_types_to_ignore))
+            types_in_type_body in
+        let swift_type = { name=type_name
+                         ; inherited_types=inherited_types
+                         ; types_in_body=types_in_type_body
+                         } in
+        find_dependencies_aux tokens_tl (swift_type :: swift_types)
     | None ->
       swift_types
   in
@@ -213,7 +224,6 @@ let find_nodes labels nodes =
 
 let edges_of_swift_types_in_file swift_types_in_file
                                  nodes
-                                 nodes_to_ignore
                                  get_related_types =
   List.map
     (
@@ -222,16 +232,6 @@ let edges_of_swift_types_in_file swift_types_in_file
         | Some from_node ->
           let related_types = get_related_types swift_type in
           let label_nodes = find_nodes related_types nodes in
-          let label_nodes =
-            List.filter
-              (
-                fun label_node ->
-                  if List.mem label_node nodes_to_ignore then
-                    false
-                  else
-                    true
-              )
-              label_nodes in
           List.map
             (
               fun label_node ->
@@ -276,8 +276,6 @@ let print_edges output_channel
                 swift_types_in_files
                 graph_name
                 get_related_types =
-  let node_names = read_file "types_to_ignore.txt" in
-  let nodes_to_ignore = find_nodes node_names nodes in
   let edges =
     List.map
       (
@@ -285,7 +283,6 @@ let print_edges output_channel
           edges_of_swift_types_in_file
             swift_types_in_file
             nodes
-            nodes_to_ignore
             get_related_types
       )
       swift_types_in_files
@@ -308,13 +305,14 @@ let () =
   try
     let folder_path = Sys.argv.(1) in
     let swift_file_paths = walk_directory_tree folder_path ".*\\.swift" in
+    let swift_types_to_ignore = read_file "types_to_ignore.txt" in
     let swift_types_in_files =
       List.map
         (
           fun file_path ->
             try
               let tokens = file_path |> tokenize |> reduce_type_tokens in
-              find_dependencies tokens
+              find_dependencies tokens swift_types_to_ignore
             with
             | _ ->
               print_endline ("Failed to parse: " ^ file_path);
