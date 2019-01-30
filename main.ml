@@ -1,16 +1,8 @@
 open Swift
 open Str
 open Unix
-
-type node =
-  { id    : int
-  ; label : string
-  }
-
-type edge =
-  { node_from_id : int
-  ; node_to_id   : int
-  }
+open Graph
+open Utils
 
 type swift_type =
   { name            : string
@@ -23,22 +15,6 @@ let tokenize file_path =
   let tokens = Parser.main Lexer.lex (Lexing.from_channel input) in
   close_in input;
   tokens
-
-let rec sort list =
-  match list with
-  | [] ->
-    []
-  | element :: tl ->
-    insert element (sort tl)
-and insert element_to_insert list =
-  match list with
-  | [] ->
-    [element_to_insert]
-  | element :: tl ->
-    if element_to_insert < element then
-      element_to_insert :: element :: tl
-    else
-      element :: insert element_to_insert tl
 
 let read_file file_path =
   let rec read_file_aux channel lines =
@@ -183,55 +159,14 @@ let walk_directory_tree dir pattern =
   in
   walk [] [dir]
 
-let remove_duplicates list =
-  let rec remove_duplicates_aux in_list out_list =
-    match in_list with
-    | element :: tl ->
-      if List.mem element out_list then
-        remove_duplicates_aux tl out_list
-      else
-        remove_duplicates_aux tl (element :: out_list)
-    | [] ->
-      List.rev out_list
-  in
-  remove_duplicates_aux list []
-
-let rec find_node label nodes =
-  match nodes with
-  | node :: tl ->
-    if node.label = label then
-      Some node
-    else
-      find_node label tl
-  | [] ->
-    None
-
-let find_nodes labels nodes =
-  let rec find_nodes_aux labels found_nodes =
-    match labels with
-    | label :: tl ->
-      begin
-        match find_node label nodes with
-        | Some found_node ->
-          find_nodes_aux tl (found_node :: found_nodes)
-        | None ->
-          find_nodes_aux tl found_nodes
-      end
-    | [] ->
-      List.rev found_nodes
-  in
-  find_nodes_aux labels []
-
-let edges_of_swift_types_in_file swift_types_in_file
-                                 nodes
-                                 get_related_types =
+let edges_of_swift_types_in_file swift_types_in_file nodes get_related_types =
   List.map
     (
       fun swift_type ->
-        match find_node swift_type.name nodes with
+        match find_node_by_label swift_type.name nodes with
         | Some from_node ->
           let related_types = get_related_types swift_type in
-          let label_nodes = find_nodes related_types nodes in
+          let label_nodes = find_nodes_by_labels related_types nodes in
           List.map
             (
               fun label_node ->
@@ -256,50 +191,85 @@ let get_nodes swift_types_in_files =
     |> List.flatten |> remove_duplicates |> sort in
   List.mapi (fun index label -> { id=index; label=label }) node_labels
 
-let print_nodes output_channel nodes graph_name node_default_color =
-  let js_nodes =
-    List.map
-      (
-        fun node ->
-          Printf.sprintf
-            "  { id: %d, label: '%s', shape: 'dot', size: 14, color: '%s' }"
-            node.id node.label node_default_color
-      )
-      nodes in
-  Printf.fprintf
-    output_channel
-    "var %sNodes = [\n%s\n];\n"
-    graph_name (String.concat ",\n" js_nodes)
+let get_edges nodes swift_types_in_files get_related_types =
+  List.map
+    (
+      fun swift_types_in_file ->
+        edges_of_swift_types_in_file swift_types_in_file nodes get_related_types
+    )
+    swift_types_in_files
+  |> List.flatten |> List.flatten
 
-let print_edges output_channel
-                nodes
-                swift_types_in_files
-                graph_name
-                get_related_types =
-  let edges =
+let js_node_str_of_node node node_color =
+  Printf.sprintf
+    "{ id: '%d', label: '%s', shape: 'dot', size: 14, color: '%s' }"
+    node.id
+    node.label
+    node_color
+
+let js_edge_str_of_edge edge =
+  Printf.sprintf
+    "{ id: '%s', from: %d, to: %d, arrows: 'to' }"
+    (get_edge_id edge)
+    edge.node_from_id
+    edge.node_to_id
+
+let print_nodes output_channel nodes node_color =
+  let js_node_strs =
+    List.map (fun node -> js_node_str_of_node node node_color) nodes in
+  let js_nodes_str = (String.concat ",\n" js_node_strs) in
+  Printf.fprintf output_channel "var nodes = [\n%s\n];" js_nodes_str
+
+let print_edges output_channel edges =
+  let js_edge_strs = List.map (fun edge -> js_edge_str_of_edge edge) edges in
+  let js_edges_str = (String.concat ",\n" js_edge_strs) in
+  Printf.fprintf output_channel "[\n%s\n]" js_edges_str
+
+let find_subgraph graph root_node_id =
+  let connected_nodes = find_connected_nodes root_node_id graph in
+  let connected_edges =
     List.map
-      (
-        fun swift_types_in_file ->
-          edges_of_swift_types_in_file
-            swift_types_in_file
-            nodes
-            get_related_types
-      )
-      swift_types_in_files
-    |> List.flatten |> List.flatten in
-  let js_edges =
-    List.map
-      (
-        fun edge ->
+      (fun node -> find_edges node.id graph.edges)
+      connected_nodes
+  |> List.flatten |> remove_duplicates in
+  let node_ids = List.map (fun node -> node.id) connected_nodes in
+  let edge_ids = List.map get_edge_id connected_edges in
+  { node_ids=node_ids; edge_ids=edge_ids }
+
+let print_subgraphs output_channel graph =
+  List.iteri
+    (
+      fun index node ->
+        let step_str =
           Printf.sprintf
-            "  { from: %d, to: %d, arrows: 'to' }"
-            edge.node_from_id edge.node_to_id
-      )
-      edges in
-  Printf.fprintf
-    output_channel
-    "var %sEdges = [\n%s\n];\n"
-    graph_name (String.concat ",\n" js_edges)
+            "%d/%d %s"
+            index
+            (List.length graph.nodes)
+            node.label in
+        print_endline step_str;
+        let subgraph = find_subgraph graph node.id in
+        let node_id_strs = 
+          List.map
+            (fun node_id -> Printf.sprintf "'%d'" node_id)
+            subgraph.node_ids in
+        let edge_id_strs = 
+          List.map
+            (fun edge_id -> Printf.sprintf "'%s'" edge_id)
+            subgraph.edge_ids in
+        let node_ids_str = String.concat ", " node_id_strs in
+        let edge_ids_str = String.concat ", " edge_id_strs in
+        Printf.fprintf
+          output_channel
+          "\"%s\": {\nnodeIds: [%s],\nedgeIds: [%s]\n}"
+          node.label
+          node_ids_str
+          edge_ids_str;
+        if index < List.length graph.nodes - 1 then
+          Printf.fprintf output_channel ",\n"
+        else
+          ()
+    )
+    graph.nodes
 
 let () =
   try
@@ -327,20 +297,35 @@ let () =
       node_default_color;
     Printf.fprintf output_channel "var nodeSelectedColor = 'FF2700';\n";
     let nodes = get_nodes swift_types_in_files in
-    print_nodes output_channel nodes "inherited" node_default_color;
-    print_edges
-      output_channel
-      nodes
-      swift_types_in_files
-      "inherited"
-      (fun swift_type -> swift_type.inherited_types);
-    print_nodes output_channel nodes "typesInBody" node_default_color;
-    print_edges
-      output_channel
-      nodes
-      swift_types_in_files
-      "typesInBody"
-      (fun swift_type -> swift_type.types_in_body);
+    print_nodes output_channel nodes node_default_color;
+    Printf.fprintf output_channel "\nvar graphs = [\n";
+    (* usage graph *)
+    let usage_edges =
+      get_edges
+        nodes
+        swift_types_in_files
+        (fun swift_type -> swift_type.types_in_body)
+      |> remove_duplicates in
+    let usage_graph = { nodes=nodes; edges=usage_edges } in
+    Printf.fprintf output_channel "{\nname: \"Usage\",\nedges: ";
+    print_edges output_channel usage_edges;
+    Printf.fprintf output_channel ",\nsubgraphs: {\n";
+    print_subgraphs output_channel usage_graph;
+    Printf.fprintf output_channel "\n}\n}";
+    (* inheritance graph *)
+    let inheritance_edges =
+      get_edges
+        nodes
+        swift_types_in_files
+        (fun swift_type -> swift_type.inherited_types)
+      |> remove_duplicates in
+    let inheritance_graph = { nodes=nodes; edges=inheritance_edges } in
+    Printf.fprintf output_channel ",\n{\nname: \"Inheritance\",\nedges: ";
+    print_edges output_channel inheritance_edges;
+    Printf.fprintf output_channel ",\nsubgraphs: {\n";
+    print_subgraphs output_channel inheritance_graph;
+    Printf.fprintf output_channel "\n}\n}";
+    Printf.fprintf output_channel "\n];";
     close_out output_channel
   with
   | Invalid_argument _ ->
